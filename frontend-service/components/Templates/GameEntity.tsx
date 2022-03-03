@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {
   BACKGROUND_SECONDARY_COLOR,
   GREEN_COLOR,
+  MEDIUM_FONT,
   SMALL_TEXT,
   TEXT_SECONDARY_COLOR,
 } from '../../const/css';
@@ -34,8 +35,10 @@ const GameEntity = ({
 const Entity = styled.div`
   display: flex;
   align-items: center;
-  flex: 1 1 20%;
+  flex: 1 1 25%;
   column-gap: 10px;
+
+  max-width: 30%;
 
   padding: 15px;
 
@@ -55,9 +58,15 @@ const EntityPic = styled.img`
   border-radius: 50px;
 `;
 
-const EntityInfo = styled.div``;
+const EntityInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
+`;
 
-const EntityName = styled.h5``;
+const EntityName = styled.h5`
+  font-family: ${MEDIUM_FONT};
+`;
 
 const EntityDescription = styled.p`
   color: ${TEXT_SECONDARY_COLOR};

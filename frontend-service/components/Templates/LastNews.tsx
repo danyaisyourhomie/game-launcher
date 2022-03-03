@@ -22,8 +22,6 @@ const News = [
   { info: Info, thumbnail: Thumbnail },
 
   { info: Info, thumbnail: Thumbnail },
-  { info: Info, thumbnail: Thumbnail },
-  { info: Info, thumbnail: Thumbnail },
 
   { info: Info, thumbnail: Thumbnail },
 ];

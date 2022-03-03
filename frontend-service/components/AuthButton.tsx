@@ -1,5 +1,4 @@
 import React from 'react';
-import { ButtonTypes } from '../common/enum/ButtonTypes';
 import { BACKGROUND_SECONDARY_COLOR } from '../const/css';
 import VkIcon from '../icons/VkIcon';
 import Button from './Button';

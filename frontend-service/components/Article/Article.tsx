@@ -29,6 +29,8 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex: 1 1 30%;
+  max-width: ${({ isMainArticle }) =>
+    isMainArticle ? '100%' : '33.33333333333%'};
   gap: 15px;
 
   flex-direction: ${({ isMainArticle }) => (isMainArticle ? 'row' : 'column')};
