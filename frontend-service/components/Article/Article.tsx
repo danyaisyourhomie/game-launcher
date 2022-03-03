@@ -41,6 +41,8 @@ const Wrapper = styled.div`
 
   padding: 20px;
 
+  margin-bottom: ${({ isMainArticle }) => (isMainArticle ? '60px' : 'unset')};
+
   & > div {
     flex: 1;
     height: 100%;

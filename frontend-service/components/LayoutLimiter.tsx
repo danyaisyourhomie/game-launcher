@@ -12,6 +12,7 @@ const LayoutLimiter = ({
 const Wrapper = styled.div`
   max-width: 1000px;
   height: 100%;
+
   margin: auto;
 
   @media (max-width: 1200px) {
