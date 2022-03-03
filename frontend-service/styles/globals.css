@@ -1,3 +1,18 @@
+@font-face {
+  font-family: 'Light';
+  src: url(../fonts/Montserrat-Light.ttf);
+}
+
+@font-face {
+  font-family: 'Regular';
+  src: url(../fonts/Montserrat-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Medium';
+  src: url(../fonts/Montserrat-Medium.ttf);
+}
+
 html,
 body {
   padding: 0;
@@ -6,9 +21,11 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: var(--background-primary-color);
   color: var(--text-primary-color);
+  font-family: 'Regular';
 }
 
 :root {
+  /* colors */
   --text-primary-color: #ffffff;
   --text-secondary-color: #a6adb1;
 
@@ -23,6 +40,16 @@ body {
   --red-color: #e24444;
   --pink-light-color: #ffcece;
   --green-light-color: #deffe5;
+
+  /* fonts */
+  --extra-small-text: 0.75em;
+  --small-text: 0.875em;
+  --medium-text: 1.125em;
+  --semi-medium-text: 1.25em;
+  --large-text: 1.5em;
+  --extra-large-text: 1.625em;
+
+  --main-text: 1.875em;
 }
 
 a {
@@ -48,6 +75,32 @@ p {
   margin: unset;
   font-weight: normal;
   font-size: 1em;
+}
+
+h1 {
+  font-family: 'Medium';
+  font-size: var(--main-text);
+  font-weight: 500;
+}
+
+h2 {
+  font-size: var(--extra-large-text);
+}
+
+h3 {
+  font-size: var(--semi-medium-text);
+}
+
+h4 {
+  font-size: var(--medium-text);
+}
+
+h5 {
+  font-size: var(--small-text);
+}
+
+h6 {
+  font-size: var(--extra-small-text);
 }
 
 button {

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BACKGROUND_SECONDARY_COLOR } from '../../const/colors';
+import { BACKGROUND_SECONDARY_COLOR } from '../../const/css';
 import HeaderMenu from './HeaderMenu';
 import HeaderProfile from './HeaderProfile';
 import LayoutLimiter from '../LayoutLimiter';

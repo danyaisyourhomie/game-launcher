@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const LayoutLimiter = ({
   children,
 }: {
-  children: ReactElement;
+  children: ReactElement | ReactElement[];
 }): React.ReactElement => {
   return <Wrapper>{children}</Wrapper>;
 };

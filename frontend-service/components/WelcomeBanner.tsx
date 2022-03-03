@@ -10,7 +10,7 @@ const WelcomeBanner = () => {
   return (
     <Banner>
       <EventLogo>
-        <Image src={eventLogo} alt='Event logo' width={600} height={70} />
+        <Image src={eventLogo} alt='Event logo' width={600} height={55} />
       </EventLogo>
       <ServerStatus />
       <Background />

@@ -1,6 +1,6 @@
 import React, { MouseEventHandler } from 'react';
 import styled from 'styled-components';
-import { BLUE_COLOR, TEXT_PRIMARY_COLOR } from '../../const/colors';
+import { BLUE_COLOR, TEXT_PRIMARY_COLOR } from '../../const/css';
 
 interface MenuItem {
   name: string;

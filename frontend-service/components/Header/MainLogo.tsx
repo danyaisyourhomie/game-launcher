@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import logo from '../../assets/logo.png';
+import { MEDIUM_FONT, MEDIUM_TEXT } from '../../const/css';
 
 const MainLogo = () => {
   return (
@@ -16,7 +17,7 @@ const MainLogo = () => {
         />
       </LogoImage>
 
-      <h2>Minecraft launcher</h2>
+      <LogoText>Minecraft launcher</LogoText>
     </Logo>
   );
 };
@@ -31,6 +32,11 @@ const Logo = styled.div`
 const LogoImage = styled.div`
   position: relative;
   top: 4px;
+`;
+
+const LogoText = styled.h2`
+  font-family: ${MEDIUM_FONT};
+  font-size: ${MEDIUM_TEXT};
 `;
 
 export default MainLogo;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconProps } from '../common/interfaces/IconProps';
-import { TEXT_PRIMARY_COLOR } from '../const/colors';
+import { TEXT_PRIMARY_COLOR } from '../const/css';
 
 const ArrowDownIcon: React.FunctionComponent<IconProps> = ({
   height = 24,

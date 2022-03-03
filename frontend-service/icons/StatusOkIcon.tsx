@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconProps } from '../common/interfaces/IconProps';
-import { GREEN_COLOR } from '../const/colors';
+import { GREEN_COLOR } from '../const/css';
 
 const StatusOkIcon: React.FunctionComponent<IconProps> = ({
   height = 24,

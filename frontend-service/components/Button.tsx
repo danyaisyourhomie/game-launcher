@@ -5,7 +5,7 @@ import {
   BLUE_COLOR,
   BUTTON_PRIMARY_COLOR,
   TEXT_PRIMARY_COLOR,
-} from '../const/colors';
+} from '../const/css';
 
 interface Props {
   name?: string;

@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import userThumb from '../assets/userThumb.jpg';
-import { BLUE_COLOR } from '../const/colors';
+import { BLUE_COLOR } from '../const/css';
 
 const UserThumb = () => {
   return (
