@@ -10,7 +10,7 @@ const LayoutLimiter = ({
 };
 
 const Wrapper = styled.div`
-  max-width: 1000px;
+  max-width: 1150px;
   height: 100%;
 
   margin: auto;

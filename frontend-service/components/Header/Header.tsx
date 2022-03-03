@@ -7,9 +7,9 @@ import LayoutLimiter from '../LayoutLimiter';
 import MainLogo from './MainLogo';
 
 const NavItems = [
-  { name: 'Главная', link: '/home' },
+  { name: 'Главная', link: '/' },
   { name: 'Сообщество', link: '/community' },
-  { name: 'Настройки', link: '/settings' },
+  { name: 'Мой профиль', link: '/profile' },
 ];
 const Header = () => {
   return (

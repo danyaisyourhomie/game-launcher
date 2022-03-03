@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 
 interface Props {
-  children: ReactElement;
+  children: ReactElement | ReactElement[];
 }
 
 const Content = ({ children }: Props): React.ReactElement => {
@@ -10,6 +10,8 @@ const Content = ({ children }: Props): React.ReactElement => {
 };
 
 const Wrapper = styled.div`
-  padding-top: 50px;
+  position: relative;
+  min-height: calc(100vh - 80px);
+  padding: 50px 0px;
 `;
 export default Content;

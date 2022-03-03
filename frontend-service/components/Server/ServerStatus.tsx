@@ -29,7 +29,6 @@ const Wrapper = styled.div`
 
   padding: 10px 30px;
   border-radius: 30px;
-  background-color: ${BACKGROUND_SECONDARY_COLOR};
 
   z-index: 1;
 

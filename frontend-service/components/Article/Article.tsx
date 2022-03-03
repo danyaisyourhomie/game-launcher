@@ -33,7 +33,7 @@ const Wrapper = styled.div`
 
   flex-direction: ${({ isMainArticle }) => (isMainArticle ? 'row' : 'column')};
 
-  height: ${({ isMainArticle }) => (isMainArticle ? '425px' : 'fit-content')};
+  height: ${({ isMainArticle }) => (isMainArticle ? '350px' : 'fit-content')};
 
   background-color: ${BACKGROUND_SECONDARY_COLOR};
 

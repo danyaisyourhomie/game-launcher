@@ -46,6 +46,8 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
 
   gap: 20px;
+
+  margin-bottom: 120px;
 `;
 
 export default LastNews;

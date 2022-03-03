@@ -18,6 +18,11 @@ const Footer = () => {
 };
 
 const Wrapper = styled.div`
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;

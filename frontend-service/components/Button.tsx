@@ -1,11 +1,7 @@
 import React, { MouseEventHandler } from 'react';
 import styled from 'styled-components';
 import { ButtonTypes } from '../common/enum/ButtonTypes';
-import {
-  BLUE_COLOR,
-  BUTTON_PRIMARY_COLOR,
-  TEXT_PRIMARY_COLOR,
-} from '../const/css';
+import { BUTTON_PRIMARY_COLOR, MEDIUM_FONT } from '../const/css';
 
 interface Props {
   name?: string;
@@ -13,27 +9,62 @@ interface Props {
   color?: string;
   callback?: MouseEventHandler<HTMLButtonElement>;
   buttonType?: ButtonTypes;
+  backgroundColor?: string;
+  iconOrientation?: 'LEFT' | 'RIGHT';
 }
 
-const Button = ({ name, icon, color, callback, buttonType }: Props) => {
+const Button = ({
+  name,
+  icon,
+  color,
+  callback,
+  buttonType,
+  backgroundColor,
+  iconOrientation = 'RIGHT',
+}: Props) => {
   return (
     <ButtonWrapper
       type='button'
       color={color}
       buttonType={buttonType ?? ButtonTypes.DEFAULT}
+      hasIcon={Boolean(icon && name)}
+      backgroundColor={backgroundColor}
       onClick={callback}>
-      {name} {icon}
+      {iconOrientation === 'LEFT' ? (
+        <>
+          {icon} {name}
+        </>
+      ) : (
+        <>
+          {name} {icon}
+        </>
+      )}
     </ButtonWrapper>
   );
 };
 
 const ButtonWrapper = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+
   padding: ${(props) =>
     props.buttonType === ButtonTypes.DEFAULT ? '10px 50px' : 'unset'};
+
+  padding: ${({ hasIcon }) => (hasIcon ? '10px 15px' : 'auto')};
+
   background-color: ${(props) =>
     props.buttonType === ButtonTypes.DEFAULT
       ? BUTTON_PRIMARY_COLOR
       : 'transparent'};
+
+  background-color: ${({ backgroundColor }) =>
+    backgroundColor ? backgroundColor : 'auto'};
+
+  font-family: ${MEDIUM_FONT};
+
+  box-sizing: ${({ hasIcon }) => (hasIcon ? 'content-box' : 'border-box')};
 `;
 
 export default Button;
