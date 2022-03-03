@@ -65,6 +65,8 @@ const ButtonWrapper = styled.button`
   font-family: ${MEDIUM_FONT};
 
   box-sizing: ${({ hasIcon }) => (hasIcon ? 'content-box' : 'border-box')};
+
+  z-index: 1;
 `;
 
 export default Button;

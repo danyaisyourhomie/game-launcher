@@ -4,6 +4,9 @@ import styled from 'styled-components';
 
 import eventLogo from '../assets/eventLogo.png';
 import background from '../assets/WelcomeBannerBg.png';
+import { BUTTON_PRIMARY_COLOR } from '../const/css';
+import DownloadIcon from '../icons/DownloadIcon';
+import Button from './Button';
 import ServerStatus from './Server/ServerStatus';
 
 const WelcomeBanner = () => {
@@ -13,6 +16,12 @@ const WelcomeBanner = () => {
         <Image src={eventLogo} alt='Event logo' width={600} height={55} />
       </EventLogo>
       <ServerStatus />
+      <Button
+        name='Скачать лаунчер'
+        backgroundColor={BUTTON_PRIMARY_COLOR}
+        icon={<DownloadIcon />}
+        iconOrientation='LEFT'
+      />
       <Background />
     </Banner>
   );
