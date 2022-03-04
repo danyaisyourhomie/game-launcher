@@ -16,14 +16,16 @@ export class AuthController {
   }
 
   @Post('/createAccount')
-  createAccount(@Body() account: CreateAccountRequest) {}
+  async createAccount(@Body() account: CreateAccountRequest) {
+    return await this.authService.createAccount(account);
+  }
 
   @Get('/changeAccountStatus/:nickname/:status')
-  changeAccountStatus(
+  async changeAccountStatus(
     @Param('nickname') nickname: string,
     @Param('status') status: AccountStatus,
   ) {}
 
   @Get('/sessionHistory/:nickname')
-  getSessionHistory(@Param('nickname') nickname: string) {}
+  async getSessionHistory(@Param('nickname') nickname: string) {}
 }

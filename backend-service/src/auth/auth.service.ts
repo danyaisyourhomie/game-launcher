@@ -46,7 +46,7 @@ export class AuthService {
     password,
     generatePassword,
   }: CreateAccountRequest) {
-    const existingUser = this.userRepository.findOne({ nickname });
+    const existingUser = await this.userRepository.findOne({ nickname });
 
     if (existingUser) {
       throw new BadRequestException({ msg: 'Этот пользователь уже создан' });
@@ -54,7 +54,7 @@ export class AuthService {
 
     const salt = bcrypt.genSaltSync(10);
 
-    const randomPassword = (Math.random() + 1).toString(36).substring(7);
+    const randomPassword = (Math.random() + 1).toString(36).substring(5);
 
     const newPassword = bcrypt.hashSync(
       generatePassword ? randomPassword : password,

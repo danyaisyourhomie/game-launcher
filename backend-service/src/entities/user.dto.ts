@@ -1,3 +1,5 @@
+import { AccountStatus } from 'src/common/enum/account.status.enum';
+import { PrimaryGeneratedColumn } from 'typeorm';
 import { Entity, Column } from 'typeorm';
 import { BaseEntity } from './base_entity.dto';
 
@@ -9,9 +11,17 @@ export class User extends BaseEntity {
   @Column()
   password: string;
 
-  @Column()
+  @PrimaryGeneratedColumn('uuid')
   uuid: boolean;
 
-  @Column()
+  @PrimaryGeneratedColumn('uuid')
   accessToken: string;
+
+  @Column({
+    nullable: true,
+  })
+  skinUrl: string;
+
+  @Column({ default: AccountStatus.ENABLED })
+  status: AccountStatus;
 }
