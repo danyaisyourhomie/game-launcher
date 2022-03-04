@@ -1,0 +1,47 @@
+version: '3.8'
+services:
+  auth:
+    container_name: backend
+    build:
+      dockerfile: Dockerfile
+      context: ./backend-service
+      target: development
+    volumes:
+      - ./backend-service:/usr/src/backend
+      - ./backend-service/node_modules:/usr/src/backend/node_modules
+    command: npm run start:dev
+    depends_on:
+      - postgres
+    environment:
+      NODE_ENV: development
+    restart: always
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
+
+  postgres:
+    container_name: postgres
+    image: postgres:10.4-alpine
+    environment:
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+      POSTGRES_DB: ${PG_DB}
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+
+  pg_admin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:4.28
+    depends_on:
+      - postgres
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PG_ADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PG_ADMIN_PASSWORD}
+    ports:
+      - 5440:80
+    restart: always
+    volumes:
+      - ./pgadmin-data:/var/lib/pgadmin
