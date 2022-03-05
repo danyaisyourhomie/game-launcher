@@ -7,7 +7,7 @@ FROM node:alpine
 WORKDIR /usr/src/frontend
 
 # copy source files
-COPY . /usr/src
+COPY . /
 
 # install dependencies
 RUN npm install
