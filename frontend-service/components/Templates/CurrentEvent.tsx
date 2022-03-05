@@ -3,11 +3,10 @@ import Article from '../Article/Article';
 import ArticleInfo from '../Article/ArticleInfo';
 import ArticleThumb from '../Article/ArticleThumb';
 
-import image from '../../assets/WelcomeBannerBg.png';
 import SectionName from '../Section/SectionName';
 import { ArticleTypes } from '../../common/enum/ArticleTypes';
 
-const Thumbnail = <ArticleThumb src={image.src} />;
+const Thumbnail = <ArticleThumb src='/assets/WelcomeBannerBg.png' />;
 
 const Info = (
   <ArticleInfo

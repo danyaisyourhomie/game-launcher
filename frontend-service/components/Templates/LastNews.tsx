@@ -1,14 +1,13 @@
 import React from 'react';
 import ArticleThumb from '../Article/ArticleThumb';
 
-import image from '../../assets/WelcomeBannerBg.png';
 import ArticleInfo from '../Article/ArticleInfo';
 import SectionName from '../Section/SectionName';
 import Article from '../Article/Article';
-import { ArticleTypes } from '../../common/enum/ArticleTypes';
+
 import styled from 'styled-components';
 
-const Thumbnail = <ArticleThumb src={image.src} />;
+const Thumbnail = <ArticleThumb src='/WelcomeBannerBg.png' />;
 
 const Info = (
   <ArticleInfo

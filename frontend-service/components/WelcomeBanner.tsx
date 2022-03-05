@@ -2,8 +2,6 @@ import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
 
-import eventLogo from '../assets/eventLogo.png';
-import background from '../assets/WelcomeBannerBg.png';
 import { BUTTON_PRIMARY_COLOR } from '../const/css';
 import DownloadIcon from '../icons/DownloadIcon';
 import Button from './Button';
@@ -13,9 +11,14 @@ const WelcomeBanner = () => {
   return (
     <Banner>
       <EventLogo>
-        <Image src={eventLogo} alt='Event logo' width={600} height={55} />
+        <Image
+          src='/assets/eventLogo.png'
+          alt='Event logo'
+          width={600}
+          height={55}
+        />
       </EventLogo>
-      <ServerStatus />
+      {/* <ServerStatus /> */}
       <Button
         name='Скачать лаунчер'
         backgroundColor={BUTTON_PRIMARY_COLOR}
@@ -53,7 +56,7 @@ const Background = styled.image`
   top: 0px;
   left: 0px;
 
-  background-image: url(${background.src});
+  background-image: url(/assets/WelcomeBannerBg.png);
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.2;

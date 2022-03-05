@@ -3,13 +3,17 @@ services:
   frontend:
     build:
       context: ./frontend-service
+      dockerfile: Dockerfile
     volumes:
       - ./frontend-service:/usr/src/frontend
+      - ./frontend-service/.next:/usr/src/frontend/.next
+      - ./frontend-service/node_modules:/usr/src/frontend/node_modules
+    restart: always
     ports:
       - 3000:3000
       - 9229:9229
 
-  auth:
+  backend:
     container_name: backend
     build:
       dockerfile: Dockerfile
@@ -27,8 +31,6 @@ services:
     restart: always
     ports:
       - 4000:4000
-    env_file:
-      - /home/kladnitsky/actions-runner/_work/game-launcher/.env
 
   postgres:
     container_name: postgres
