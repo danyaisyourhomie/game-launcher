@@ -12,7 +12,11 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: /home/game-launcher
+
     steps:
       - uses: actions/checkout@v2
       - name: Touch
-        run: pwd
+        run: touch test.txt
