@@ -19,7 +19,7 @@ services:
     ports:
       - 4000:4000
     env_file:
-      - ../.env
+      - /home/kladnitsky/actions-runner/_work/game-launcher/.env
 
   postgres:
     container_name: postgres
