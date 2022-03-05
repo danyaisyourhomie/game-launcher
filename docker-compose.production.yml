@@ -4,10 +4,6 @@ services:
     build:
       context: ./frontend-service
       dockerfile: Dockerfile
-    volumes:
-      - ./frontend-service:/usr/src/frontend
-      - ./frontend-service/.next:/usr/src/frontend/.next
-      - ./frontend-service/node_modules:/usr/src/frontend/node_modules
     restart: always
     ports:
       - 3000:3000
@@ -20,9 +16,7 @@ services:
       context: ./backend-service
       target: production
     volumes:
-      - ./backend-service:/usr/src/backend
-      - ./backend-service/node_modules:/usr/src/backend/node_modules
-      - ./game-textures:/usr/src/backend/public
+      - /home/game-textures:/usr/src/backend/public
     command: npm run start
     depends_on:
       - postgres
@@ -42,7 +36,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
+      - /home/postgres-data:/var/lib/postgresql/data
 
   pg_admin:
     container_name: pgadmin
@@ -56,4 +50,4 @@ services:
       - 5440:80
     restart: always
     volumes:
-      - ./pgadmin-data:/var/lib/pgadmin
+      - /home/pgadmin-data:/var/lib/pgadmin
