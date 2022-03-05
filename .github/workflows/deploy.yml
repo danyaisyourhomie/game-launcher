@@ -19,4 +19,4 @@ jobs:
       # - name: Stop Docker Compose
       #   run: docker-compose -f docker-compose.production.yml down
       - name: Build Docker Container
-        run: docker-compose -f docker-compose.production.yml up --env-file /home/kladnitsky/game-launcher/.env --build --force-recreate
+        run: docker-compose -f docker-compose.production.yml --env-file /home/kladnitsky/game-launcher/.env up --build
