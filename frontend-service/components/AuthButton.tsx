@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import { BACKGROUND_SECONDARY_COLOR } from '../const/css';
+import UsersIcon from '../icons/UsersIcon';
 import VkIcon from '../icons/VkIcon';
 import Button from './Button';
 
-const AuthButton = () => {
+const AuthButton = ({
+  callback,
+}: {
+  callback: MouseEventHandler<HTMLButtonElement>;
+}) => {
   return (
     <Button
-      name='Авторизация через ВК'
-      icon={<VkIcon />}
-      iconOrientation='LEFT'
+      name='Авторизоваться'
+      callback={callback}
+      icon={<UsersIcon />}
       backgroundColor={BACKGROUND_SECONDARY_COLOR}
     />
   );

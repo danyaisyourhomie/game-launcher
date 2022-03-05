@@ -20,7 +20,7 @@ ENV NODE_ENV=${NODE_ENV}
 
 WORKDIR /usr/src/backend
 
-COPY --from=development / /usr/src/rest
+COPY --from=development / /usr/src/backend/
 
 # EXPOSING PORT FOR OUTER WORLD
 EXPOSE 3000

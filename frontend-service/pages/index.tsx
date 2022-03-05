@@ -6,6 +6,7 @@ import CurrentEvent from '../components/Templates/CurrentEvent';
 import WelcomeBanner from '../components/WelcomeBanner';
 import LastNews from '../components/Templates/LastNews';
 import Footer from '../components/Footer';
+import withAuth from '../guards/withAuth';
 
 const Home: NextPage = () => {
   return (
@@ -24,3 +25,5 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+Home.requireAuth = true;

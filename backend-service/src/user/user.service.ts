@@ -15,7 +15,13 @@ export class UserService {
   }
 
   async getUser(nickname: string) {
-    return await this.userRepository.find({ nickname });
+    const user = await this.userRepository.findOne({ nickname });
+
+    delete user.password;
+    delete user.id;
+    delete user.updatedAt;
+
+    return user;
   }
 
   async updateUser(nickname: string, data: Partial<User>) {

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Megabattle Launcher</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+
+  <body>
+    <div class="wrapper" id="wrapper">
+      <div class="logo">
+        <img src="images/logo.png" />
+      </div>
+      <div class="control" id="control">
+        <div class="button button_play" id="button_play" onclick="launchGame()">
+          Играть
+        </div>
+        <div class="button_change-nick" id="button_setSys">
+          Настроить оперативную память
+        </div>
+      </div>
+      <div class="info" id="info">
+        <p id="info-p">Проверяю файлы игры...</p>
+        <img src="images/status.gif" />
+      </div>
+      <div class="javaVersion" id="javaVersion"></div>
+    </div>
+  </body>
+  <script>
+    window.$ = window.jQuery = require('./js/jquery.js');
+  </script>
+  <script src="js/script.js"></script>
+</html>

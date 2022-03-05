@@ -6,6 +6,7 @@ import LayoutLimiter from '../components/LayoutLimiter';
 import Content from '../components/Section/Section';
 import Admins from '../components/Templates/Admins';
 import Teams from '../components/Templates/Teams';
+import withAuth from '../guards/withAuth';
 
 const Community: NextPage = () => {
   return (
@@ -23,3 +24,5 @@ const Community: NextPage = () => {
 };
 
 export default Community;
+
+Community.requireAuth = true;

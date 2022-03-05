@@ -7,6 +7,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Article } from './entities/article.dto';
 import { User } from './entities/user.dto';
 import { AuthSession } from './entities/auth_session.dto';
+import { join } from 'path';
+import { ServeStaticModule } from '@nestjs/serve-static';
 
 @Module({
   imports: [
@@ -21,6 +23,9 @@ import { AuthSession } from './entities/auth_session.dto';
       database: process.env.PG_DB,
       entities: [Article, User, AuthSession],
       synchronize: true,
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
     }),
   ],
   controllers: [AppController],

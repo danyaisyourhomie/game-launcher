@@ -21,3 +21,5 @@ const Profile: NextPage = () => {
 };
 
 export default Profile;
+
+Profile.requireAuth = true;

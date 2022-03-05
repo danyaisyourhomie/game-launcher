@@ -11,6 +11,7 @@ interface Props {
   buttonType?: ButtonTypes;
   backgroundColor?: string;
   iconOrientation?: 'LEFT' | 'RIGHT';
+  link?: string;
 }
 
 const Button = ({
@@ -21,6 +22,7 @@ const Button = ({
   buttonType,
   backgroundColor,
   iconOrientation = 'RIGHT',
+  link,
 }: Props) => {
   return (
     <ButtonWrapper

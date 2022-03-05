@@ -9,6 +9,7 @@ services:
     volumes:
       - ./backend-service:/usr/src/backend
       - ./backend-service/node_modules:/usr/src/backend/node_modules
+      - ./game-textures:/usr/src/backend/public
     command: npm run start:dev
     depends_on:
       - postgres
@@ -16,7 +17,7 @@ services:
       NODE_ENV: development
     restart: always
     ports:
-      - 3000:3000
+      - 4000:4000
     env_file:
       - .env
 
