@@ -15,4 +15,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Touch
-        run: touch test.txt
+        run: pwd
