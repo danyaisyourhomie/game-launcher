@@ -1,26 +1,26 @@
-# name: CI
+name: CI
 
-# on:
-#   pull_request:
-#     branches:
-#       - 'master'
-#   push:
-#     branches:
-#       - 'master'
+on:
+  pull_request:
+    branches:
+      - 'master'
+  push:
+    branches:
+      - 'master'
 
-# jobs:
-#   test:
-#     runs-on: ubuntu-latest
+jobs:
+  test:
+    runs-on: self-hosted
 
-#     defaults:
-#       run:
-#         working-directory: /home/kladnitsky/game-launcher
+    defaults:
+      run:
+        working-directory: /home/kladnitsky/game-launcher
 
-#     steps:
-#       - uses: actions/checkout@v2
-#       - name: Docker Compose Test
-#         run: docker-compose -f docker-compose.yml up -d
-#       - name: Stop Docker Compose
-#         run: docker-compose -f docker-compose.yml down
-#       - name: Build Docker Container
-#         run: docker-compose -f docker-compose.yml up --build
+    steps:
+      - uses: actions/checkout@v2
+      - name: Docker Compose Test
+        run: docker-compose -f docker-compose.yml up -d
+      - name: Stop Docker Compose
+        run: docker-compose -f docker-compose.yml down
+      - name: Build Docker Container
+        run: docker-compose -f docker-compose.yml up --build
