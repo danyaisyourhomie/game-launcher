@@ -20,10 +20,14 @@ ENV NODE_ENV=${NODE_ENV}
 
 WORKDIR /usr/src/backend
 
-COPY --from=development / /usr/src/backend/
+COPY package.json ./
+COPY package-lock.json ./
 
-# EXPOSING PORT FOR OUTER WORLD
-EXPOSE 3000
+RUN npm install --only=production
+
+COPY . .
+
+COPY --from=development /usr/src/app/dist ./dist
 
 # Run app
 CMD [ "node", "dist/main" ]
