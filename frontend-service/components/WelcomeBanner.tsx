@@ -21,6 +21,7 @@ const WelcomeBanner = () => {
         backgroundColor={BUTTON_PRIMARY_COLOR}
         icon={<DownloadIcon />}
         iconOrientation='LEFT'
+        link='https://disk.yandex.ru/d/9VsAWPB3HzaFag'
       />
       <Background />
     </Banner>

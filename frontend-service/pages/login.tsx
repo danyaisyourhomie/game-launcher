@@ -40,20 +40,23 @@ const Login: NextPage = () => {
       return;
     }
 
-    const { result, err } = await loginUser(nickname, password);
-
-    console.log(result, err);
+    const { result, err }: { result: User; err: string } = await loginUser(
+      nickname,
+      password
+    );
 
     if (err) {
-      enqueueSnackbar('Неправильный логин / пароль', { variant: 'error' });
+      enqueueSnackbar(err, { variant: 'error' });
       return;
     }
 
-    enqueueSnackbar('Вы успешно авторизовались!', { variant: 'success' });
+    if (result.token) {
+      enqueueSnackbar('Вы успешно авторизовались!', { variant: 'success' });
 
-    window.localStorage.setItem('token', result.token);
+      window.localStorage.setItem('token', result.token);
 
-    window.location.href = '/';
+      window.location.href = '/';
+    }
   };
 
   return (
@@ -105,9 +108,14 @@ const Wrapper = styled.div`
 const Form = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   row-gap: 15px;
+  width: 300px;
 
-  min-width: 320px;
+  > * {
+    width: 100%;
+  }
 `;
 
 const GameLogo = styled.img`

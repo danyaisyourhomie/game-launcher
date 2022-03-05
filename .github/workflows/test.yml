@@ -1,0 +1,22 @@
+# name: Test Workflow
+
+on:
+  pull_request:
+    branches:
+      - 'master'
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: /home/kladnitsky/game-launcher
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Touch
+        run: touch test.txt

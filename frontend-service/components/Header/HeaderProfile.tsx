@@ -1,19 +1,30 @@
 import React, { useCallback, useContext, useMemo } from 'react';
+const jwt = require('jsonwebtoken');
 import styled from 'styled-components';
 import { ButtonTypes } from '../../common/enum/ButtonTypes';
 import ArrowDownIcon from '../../icons/ArrowDownIcon';
 import Button from './../Button';
 import UserThumb from '../UserThumb';
 import { AuthContext } from '../../context/AuthProvider';
+import { User } from '../../common/interfaces/user.dto';
 
 const HeaderProfile = () => {
-  const { user } = useContext(AuthContext);
+  const { user }: { user: User } = useContext(AuthContext);
 
-  console.log(user);
+  const token = localStorage.getItem('token');
+
+  const dataToTransfer = jwt.sign(
+    {
+      nickname: user.nickname,
+      uuid: user.uuid,
+      accessToken: user.accessToken,
+    },
+    'LAUNCHER'
+  );
 
   const openLauncher = useCallback(() => {
-    window.location.href = `megalauncher://userId:${user.token}`;
-  }, []);
+    window.location.href = `megalauncher://TOKEN===${dataToTransfer}`;
+  }, [user]);
 
   return (
     <Wrapper>

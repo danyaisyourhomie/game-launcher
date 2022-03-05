@@ -24,7 +24,27 @@ const Button = ({
   iconOrientation = 'RIGHT',
   link,
 }: Props) => {
-  return (
+  return link ? (
+    <a href={link}>
+      <ButtonWrapper
+        type='button'
+        color={color}
+        buttonType={buttonType ?? ButtonTypes.DEFAULT}
+        hasIcon={Boolean(icon && name)}
+        backgroundColor={backgroundColor}
+        onClick={callback}>
+        {iconOrientation === 'LEFT' ? (
+          <>
+            {icon} {name}
+          </>
+        ) : (
+          <>
+            {name} {icon}
+          </>
+        )}
+      </ButtonWrapper>
+    </a>
+  ) : (
     <ButtonWrapper
       type='button'
       color={color}

@@ -1,3 +1,5 @@
+import { getUserByToken } from '../api';
+
 export type UserCB = (user: User, error: any) => void;
 
 const userEmail = `admin@example.com`;
@@ -73,18 +75,15 @@ export class Auth {
 
         if (!token) {
           this.user = null;
+          return;
         }
 
-        const user = await fetch('http://localhost:4000/auth/sync', {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ token }),
-        }).then((data) => data.json());
+        const { result, err } = await getUserByToken(token);
+        console.log(result);
 
-        this.user = user;
+        if (result) {
+          this.user = result;
+        }
       } else {
         this.user = null;
       }

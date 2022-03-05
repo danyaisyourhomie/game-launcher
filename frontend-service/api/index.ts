@@ -2,7 +2,7 @@ export const BACKEND_HOST = 'localhost:4000';
 
 export const getUserByToken = async (token: string) => {
   try {
-    const user = await fetch('http://localhost:4000/auth/sync', {
+    const res = await fetch('http://localhost:4000/auth/sync', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -10,8 +10,10 @@ export const getUserByToken = async (token: string) => {
       },
       body: JSON.stringify({ token }),
     }).then((data) => data.json());
+
+    return { result: res };
   } catch (err) {
-    console.log(err);
+    return { err: res.msg };
 
     return null;
   }

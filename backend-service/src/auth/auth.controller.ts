@@ -36,6 +36,8 @@ export class AuthController {
 
   @Post('/sync/')
   async syncWithClient(@Body() { token }: TokenVerifyRequest) {
+    console.log(token);
+
     return await this.authService.syncWithClient(token);
   }
 
@@ -44,7 +46,7 @@ export class AuthController {
 
   // Server endpoints
 
-  @Post('join')
+  @Post('join.php')
   async join(@Body() data: JoinRequest) {
     if (!data.accessToken || !data.selectedProfile) {
       throw new BadRequestException({
@@ -55,7 +57,7 @@ export class AuthController {
     return await this.authService.join(data);
   }
 
-  @Get('hasJoined')
+  @Get('hasJoined.php')
   async hasJoined(@Query() data: HasJoinedRequest) {
     if (!data.username || !data.serverId) {
       throw new BadRequestException({

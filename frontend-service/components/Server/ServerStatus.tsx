@@ -5,16 +5,19 @@ import StatusOkIcon from '../../icons/StatusOkIcon';
 import UsersIcon from '../../icons/UsersIcon';
 
 const ServerStatus = () => {
+  const isVisible = false;
   return (
-    <Wrapper>
-      <OnlineStatus>
-        <StatusOkIcon /> Онлайн
-      </OnlineStatus>
-      <PlayersCount>
-        <UsersIcon />
-        153/200
-      </PlayersCount>
-    </Wrapper>
+    isVisible && (
+      <Wrapper>
+        <OnlineStatus>
+          <StatusOkIcon /> Онлайн
+        </OnlineStatus>
+        <PlayersCount>
+          <UsersIcon />
+          153/200
+        </PlayersCount>
+      </Wrapper>
+    )
   );
 };
 

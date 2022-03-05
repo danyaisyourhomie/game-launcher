@@ -1,8 +1,13 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
+
+const jwt = require('jsonwebtoken');
 // Module with utilities for working with file and directory paths.
 const path = require('path');
 // Module with utilities for URL resolution and parsing.
 const url = require('url');
+
+const { Client, Authenticator } = require('minecraft-launcher-core');
+const launcher = new Client();
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -23,7 +28,7 @@ if (gotTheLock) {
       // Keep only command line / deep linked arguments
       deeplinkingUrl = argv.slice(1);
     }
-    logEverywhere('app.makeSingleInstance# ' + deeplinkingUrl);
+    logTool('app.makeSingleInstance# ' + deeplinkingUrl);
 
     if (mainWindow) {
       if (mainWindow.isMinimized()) mainWindow.restore();
@@ -33,6 +38,63 @@ if (gotTheLock) {
 } else {
   app.quit();
   return;
+}
+
+function handleWebSync(data) {
+  const token = data.replace(/\//g, '').split('===')[1];
+
+  logTool(token, ' <- received token');
+
+  const user = jwt.verify(token, 'LAUNCHER');
+
+  logTool(user.nickname, ' <- received nickname');
+
+  const userProfile = {
+    access_token: user.accessToken,
+    client_token: user.accessToken,
+    uuid: user.uuid,
+    name: user.nickname,
+    user_properties: JSON.stringify({}),
+  };
+
+  mainWindow.webContents.send('status', 'Запускаем игру...');
+
+  launchGame(userProfile);
+}
+
+function launchGame(user) {
+  logTool('launched game');
+
+  console.log(user);
+
+  let opts = {
+    clientPackage: null,
+    authorization: user,
+    auto_connect: true,
+    root: 'bin/minecraft',
+    os: 'windows',
+    version: {
+      number: '1.18.2',
+      type: 'release',
+    },
+    memory: {
+      max: '1500',
+      min: '512',
+    },
+    host: 'mbtl.ru',
+  };
+
+  console.log(opts);
+  launcher.launch(opts);
+
+  launcher.on('debug', (e) => logTool(e));
+  launcher.on('close', () => closeGame());
+  launcher.on('data', (e) => mainWindow.webContents.send(e));
+}
+
+function closeGame() {
+  mainWindow.show();
+  mainWindow.webContents.send('status', 'gameClosed');
 }
 
 function createWindow() {
@@ -62,7 +124,16 @@ function createWindow() {
     // Keep only command line / deep linked arguments
     deeplinkingUrl = process.argv.slice(1);
   }
-  logEverywhere('createWindow# ' + deeplinkingUrl);
+
+  // const userProfile = {
+  //   access_token: 'test',
+  //   client_token: 'test',
+  //   uuid: 'test',
+  //   name: 'test',
+  //   user_properties: JSON.stringify({}),
+  // };
+
+  // launchGame(userProfile);
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -95,6 +166,8 @@ app.on('activate', function () {
   }
 });
 
+app.removeAsDefaultProtocolClient('megalauncher');
+
 if (!app.isDefaultProtocolClient('megalauncher')) {
   // Define custom protocol handler. Deep linking works on packaged versions of the application!
   app.setAsDefaultProtocolClient('megalauncher');
@@ -105,14 +178,16 @@ app.on('will-finish-launching', function () {
   app.on('open-url', function (event, url) {
     event.preventDefault();
     deeplinkingUrl = url;
-    logEverywhere('open-url# ' + deeplinkingUrl);
+
+    handleWebSync(deeplinkingUrl);
   });
 });
 
-// Log both at dev console and at running node console instance
-function logEverywhere(s) {
-  console.log(s);
+function logTool(data, prefix = '') {
   if (mainWindow && mainWindow.webContents) {
-    mainWindow.webContents.executeJavaScript(`console.log("${s}")`);
+    mainWindow.webContents.executeJavaScript(
+      `console.log("${prefix}", "${data}")`
+    );
   }
+  console.log(data);
 }

@@ -6,4 +6,6 @@ export interface User {
   isu?: number;
   token: string;
   skinUrl?: string;
+  uuid?: string;
+  accessToken?: string;
 }
