@@ -71,10 +71,10 @@ export class AuthController {
       });
     }
 
-    const data = await this.authService.HasJoined(data);
+    const result = await this.authService.HasJoined(data);
 
-    console.log(data);
+    console.log(result);
 
-    return data;
+    return result;
   }
 }
