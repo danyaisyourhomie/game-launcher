@@ -126,20 +126,24 @@ export class AuthService {
     const accessToken = data.accessToken;
 
     try {
-      const user = (await this.userRepository.findOne({ accessToken })) as User;
+      const user = (await this.userRepository.findOne({
+        accessToken,
+      })) as User;
 
-      if (!user || user.uuid !== uuid) {
+      const userUUID = user.uuid.replace(/-/g, '');
+
+      if (!user || userUUID !== uuid) {
         throw new NotFoundException({ error: 'Invalid user credentials' });
       }
 
       await this.userRepository.save({
         ...user,
-        uuid,
+        userUUID,
         serverId: data.serverId,
         accessToken: uuid4(),
       });
 
-      return { uuid: user.uuid, nickname: user.nickname } as User;
+      return { uuid: userUUID, nickname: user.nickname } as User;
     } catch (err) {
       console.log(err);
       throw new NotFoundException({ error: 'Invalid user credentials' });
@@ -178,8 +182,10 @@ export class AuthService {
 
     const textures = [{ SKIN: [{ url: skinUrl }], CAPE: [{ url: capeUrl }] }];
 
+    const userUUID = user.uuid.replace(/-/g, '');
+
     const res = {
-      id: uuid,
+      id: userUUID,
       name: user.nickname,
       properties: [
         {
@@ -187,7 +193,7 @@ export class AuthService {
           value: btoa(
             JSON.stringify({
               timestamp: new Date(),
-              profileId: uuid,
+              profileId: userUUID,
               profileName: user.nickname,
               textures: {
                 SKIN: { url: skinUrl },
@@ -195,8 +201,7 @@ export class AuthService {
               },
             }),
           ),
-          signature:
-            '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2',
+          signature: '',
         },
       ],
     };

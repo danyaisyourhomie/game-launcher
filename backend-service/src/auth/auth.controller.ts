@@ -54,10 +54,7 @@ export class AuthController {
       });
     }
 
-    const result = await this.authService.join({
-      ...data,
-      selectedProfile: data.selectedProfile.replace(/-/g, ''),
-    });
+    const result = await this.authService.join(data);
 
     console.log(result);
 
@@ -72,7 +69,7 @@ export class AuthController {
       });
     }
 
-    const result = await this.authService.getProfile(uuid.replace(/-/g, ''));
+    const result = await this.authService.getProfile(uuid);
 
     console.log(result);
 
