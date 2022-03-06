@@ -19,10 +19,10 @@ jobs:
       - name: Clean
         run: docker system prune -af
       - name: Pull
-        run: docker-compose --env-file /home/kladnitsky/game-launcher/.env pull
+        run: docker-compose pull
       - name: Build
-        run: docker-compose -f docker-compose.production.yml --env-file /home/kladnitsky/game-launcher/.env build
+        run: docker-compose -f docker-compose.production.yml build
       - name: Up
-        run: docker-compose -f docker-compose.production.yml --env-file /home/kladnitsky/game-launcher/.env up -d
+        run: docker-compose -f docker-compose.production.yml up -d
       - name: Status
         run: docker ps -a
