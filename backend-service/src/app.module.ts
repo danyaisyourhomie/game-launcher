@@ -25,7 +25,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
       synchronize: true,
     }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'public'),
+      rootPath: join(__dirname, '..', 'static'),
     }),
   ],
   controllers: [AppController],
