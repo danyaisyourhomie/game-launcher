@@ -26,7 +26,7 @@ services:
     ports:
       - 4000:4000
     env_file:
-      - .env
+      - /home/kladnitsky/game-launcher/.env
 
   postgres:
     container_name: postgres
@@ -36,9 +36,9 @@ services:
     volumes:
       - /home/postgres-data:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: ${PG_USER}
-      POSTGRES_PASSWORD: ${PG_PASSWORD}
-      POSTGRES_DB: ${PG_DB}
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: server
 
   pg_admin:
     container_name: pgadmin
@@ -49,7 +49,7 @@ services:
       - 5440:80
     restart: always
     environment:
-      PGADMIN_DEFAULT_EMAIL: ${PG_ADMIN_EMAIL}
-      PGADMIN_DEFAULT_PASSWORD: ${PG_ADMIN_PASSWORD}
+      PGADMIN_DEFAULT_EMAIL: core2pixel@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: password
     volumes:
       - /home/pgadmin-data:/var/lib/pgadmin
