@@ -36,8 +36,6 @@ export class AuthController {
 
   @Post('/sync/')
   async syncWithClient(@Body() { token }: TokenVerifyRequest) {
-    console.log(token);
-
     return await this.authService.syncWithClient(token);
   }
 

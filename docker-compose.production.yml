@@ -26,7 +26,7 @@ services:
     ports:
       - 4000:4000
     env_file:
-      - /home/kladnitsky/game-launcher/.env
+      - .env
 
   postgres:
     container_name: postgres
@@ -39,8 +39,6 @@ services:
       POSTGRES_USER: ${PG_USER}
       POSTGRES_PASSWORD: ${PG_PASSWORD}
       POSTGRES_DB: ${PG_DB}
-    env_file:
-      - /home/kladnitsky/game-launcher/.env
 
   pg_admin:
     container_name: pgadmin
@@ -55,5 +53,3 @@ services:
       PGADMIN_DEFAULT_PASSWORD: ${PG_ADMIN_PASSWORD}
     volumes:
       - /home/pgadmin-data:/var/lib/pgadmin
-    env_file:
-      - /home/kladnitsky/game-launcher/.env
