@@ -18,8 +18,8 @@ jobs:
         run: docker-compose -f docker-compose.production.yml down
       - name: Clean images
         run: docker system prune -af
-      - name: Copy env file to work folder
-        run: cp /home/kladnitsky/game-launcher/.env /home/kladnitsky/game-launcher/game-launcher/.env
+      # - name: Copy env file to work folder
+      #   run: cp /home/kladnitsky/game-launcher/.env /home/kladnitsky/game-launcher/game-launcher/.env
       - name: Pull latest services
         run: docker-compose -f docker-compose.production.yml pull
       - name: Build services
