@@ -151,11 +151,15 @@ export class AuthService {
         nickname: username,
       })) as User;
 
-      if (!user || user.serverId !== serverId) {
-        throw new NotFoundException({ error: 'Invalid user credentials' });
+      if (!user) {
+        throw new NotFoundException({ error: 'Invalid user name' });
       }
 
-      return { uuid: user.uuid, nickname: user.nickname } as User;
+      await this.userRepository.save({ ...user, serverId });
+
+      // return { uuid: user.uuid, nickname: user.nickname } as User;
+
+      return getProfile(user.uuid, user.nickname);
     } catch (err) {
       console.log(err);
       throw new NotFoundException({ error: 'Invalid user credentials' });
