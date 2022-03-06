@@ -9,6 +9,6 @@ export class Article extends BaseEntity {
   @Column()
   description: string;
 
-  @Column()
+  @Column({ nullable: true })
   thumbnail: string;
 }

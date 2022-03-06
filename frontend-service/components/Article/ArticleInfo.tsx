@@ -31,6 +31,8 @@ const Wrapper = styled.div`
   row-gap: 10px;
 
   padding: 0px 15px;
+
+  min-height: 100px;
 `;
 
 const MainTitle = styled.h1``;

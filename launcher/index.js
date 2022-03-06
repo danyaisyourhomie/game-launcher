@@ -77,7 +77,7 @@ function launchGame(user) {
     auto_connect: true,
     root: 'bin/minecraft',
     os: 'windows',
-    forge: './bin/fabric.jar',
+
     version: {
       number: '1.18.1',
       type: 'release',

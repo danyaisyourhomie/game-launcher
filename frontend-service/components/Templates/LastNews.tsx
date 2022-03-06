@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ArticleThumb from '../Article/ArticleThumb';
 
 import ArticleInfo from '../Article/ArticleInfo';
@@ -6,8 +6,10 @@ import SectionName from '../Section/SectionName';
 import Article from '../Article/Article';
 
 import styled from 'styled-components';
+import { getArticles } from '../../api';
+import { renderDate } from '../../utils/data';
 
-const Thumbnail = <ArticleThumb src='/WelcomeBannerBg.png' />;
+const Thumbnail = <ArticleThumb />;
 
 const Info = (
   <ArticleInfo
@@ -26,13 +28,32 @@ const News = [
 ];
 
 const LastNews = () => {
+  const [news, setNews] = useState([]);
+
+  const handleNews = async () => {
+    const { result } = await getArticles();
+
+    setNews(result);
+  };
+
+  useEffect(() => {
+    handleNews();
+  }, []);
+
   return (
     <>
       <SectionName title='Последние новости' />
       <Wrapper>
-        {News.map((item, key) => (
-          <Article {...item} key={key} />
-        ))}
+        {news.map((item, key) => {
+          const Thumbnail = <ArticleThumb src={item.thumbnail} />;
+
+          const Info = (
+            <ArticleInfo title={item.title} date={renderDate(item.createdAt)} />
+          );
+          return (
+            <Article {...item} info={Info} thumbnail={Thumbnail} key={key} />
+          );
+        })}
       </Wrapper>
     </>
   );

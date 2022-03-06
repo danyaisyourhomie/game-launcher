@@ -9,6 +9,8 @@ import ServerStatus from './Server/ServerStatus';
 
 import eventLogo from '../assets/eventLogo.png';
 
+import eventBanner from '../assets/banner.jpg';
+
 const WelcomeBanner = () => {
   return (
     <Banner>
@@ -61,7 +63,7 @@ const Background = styled.image`
   top: 0px;
   left: 0px;
 
-  background-image: url(/assets/WelcomeBannerBg.png);
+  background-image: url(${eventBanner.src});
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.2;

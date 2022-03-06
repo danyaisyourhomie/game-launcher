@@ -1,3 +1,5 @@
+import { ArticleModule } from './article/article.module';
+import { ArticleController } from './article/article.controller';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { Module } from '@nestjs/common';
@@ -12,8 +14,10 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 
 @Module({
   imports: [
+    ArticleModule,
     UserModule,
     AuthModule,
+    ArticleModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'postgres',

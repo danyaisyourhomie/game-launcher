@@ -13,8 +13,6 @@ const HeaderProfile = () => {
 
   const token = localStorage.getItem('token');
 
-  console.log(token);
-
   const dataToTransfer = jwt.sign(
     {
       nickname: user.nickname,

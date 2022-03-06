@@ -7,7 +7,7 @@ const Loading = () => {
   return (
     <Wrapper>
       <LoadingGif src={loadingGifZombie.src} />
-      <LoadingBar>Loading...</LoadingBar>
+      <LoadingBar>Загрузка...</LoadingBar>
     </Wrapper>
   );
 };

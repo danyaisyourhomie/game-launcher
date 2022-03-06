@@ -60,6 +60,8 @@ const Wrapper = styled.div`
 
 const Thumbnail = styled.div``;
 
-const Text = styled.div``;
+const Text = styled.div`
+  width: 100%;
+`;
 
 export default Article;
