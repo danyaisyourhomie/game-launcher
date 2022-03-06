@@ -175,25 +175,28 @@ export class AuthService {
     const capeUrl =
       'https://tlauncher.org/upload/all/cloak/414673518322a453535e84419e9fb8c1.png';
 
-    const textures = { SKIN: [{ url: skinUrl }], CAPE: [{ url: capeUrl }] };
+    const textures = [{ SKIN: [{ url: skinUrl }], CAPE: [{ url: capeUrl }] }];
 
     const res = {
       id: uuid,
       name: user.nickname,
       properties: [
-        [
-          {
-            name: 'textures',
-            value: btoa(
-              JSON.stringify({
-                timestamp: new Date(),
-                profileId: uuid,
-                profileName: user.nickname,
-                textures: textures,
-              }),
-            ),
-          },
-        ],
+        {
+          0: [
+            {
+              name: 'textures',
+              value: btoa(
+                JSON.stringify({
+                  timestamp: new Date(),
+                  profileId: uuid,
+                  profileName: user.nickname,
+                  textures: textures,
+                }),
+              ),
+              signature: '',
+            },
+          ],
+        },
       ],
     };
 
