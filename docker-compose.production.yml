@@ -25,6 +25,7 @@ services:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: password
       POSTGRES_DB: server
+      JWT_TOKEN: LAUNCHER
     restart: always
     ports:
       - 4000:4000
