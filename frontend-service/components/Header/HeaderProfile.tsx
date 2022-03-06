@@ -13,6 +13,8 @@ const HeaderProfile = () => {
 
   const token = localStorage.getItem('token');
 
+  console.log(token);
+
   const dataToTransfer = jwt.sign(
     {
       nickname: user.nickname,
@@ -23,7 +25,7 @@ const HeaderProfile = () => {
   );
 
   const openLauncher = useCallback(() => {
-    window.location.href = `megalauncherprotocol://TOKEN===${dataToTransfer}`;
+    window.location.href = `megalauncher://TOKEN===${dataToTransfer}`;
   }, [user]);
 
   return (

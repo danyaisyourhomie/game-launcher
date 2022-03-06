@@ -40,12 +40,16 @@ if (gotTheLock) {
   return;
 }
 
-function handleWebSync(data) {
+function handleWebSync(
+  data = 'TOKEN===eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrbmFtZSI6ImtsYWRuaXRza3kiLCJza2luVXJsIjpudWxsLCJpYXQiOjE2NDY1NjA5MTB9.htI9ErCIlLaKCXVLxRYKx4X1BC2mLPBaQt3bkB9hbLQ'
+) {
+  console.log(1);
   const token = data.replace(/\//g, '').split('===')[1];
 
   logTool(token, ' <- received token');
 
   const user = jwt.verify(token, 'LAUNCHER');
+  console.log(user);
 
   logTool(user.nickname, ' <- received nickname');
 
@@ -73,14 +77,16 @@ function launchGame(user) {
     auto_connect: true,
     root: 'bin/minecraft',
     os: 'windows',
+    forge: './bin/fabric.jar',
     version: {
-      number: '1.18.2',
+      number: '1.18.1',
       type: 'release',
     },
     memory: {
       max: '1500',
       min: '512',
     },
+
     host: 'mbtl.ru',
   };
 
@@ -94,7 +100,7 @@ function launchGame(user) {
 
 function closeGame() {
   mainWindow.show();
-  mainWindow.webContents.send('status', 'gameClosed');
+  mainWindow.webContents.send('status', 'Готово к запуску через mbtl.ru');
 }
 
 function createWindow() {
@@ -124,6 +130,8 @@ function createWindow() {
     // Keep only command line / deep linked arguments
     deeplinkingUrl = process.argv.slice(1);
   }
+
+  handleWebSync();
 
   // const userProfile = {
   //   access_token: 'test',
@@ -166,11 +174,11 @@ app.on('activate', function () {
   }
 });
 
-app.removeAsDefaultProtocolClient('megalauncherprotocol');
+app.removeAsDefaultProtocolClient('megalauncher');
 
-if (!app.isDefaultProtocolClient('megalauncherprotocol')) {
+if (!app.isDefaultProtocolClient('megalauncher')) {
   // Define custom protocol handler. Deep linking works on packaged versions of the application!
-  app.setAsDefaultProtocolClient('megalauncherprotocol');
+  app.setAsDefaultProtocolClient('megalauncher');
 }
 
 app.on('will-finish-launching', function () {
@@ -185,9 +193,10 @@ app.on('will-finish-launching', function () {
 
 function logTool(data, prefix = '') {
   if (mainWindow && mainWindow.webContents) {
-    mainWindow.webContents.executeJavaScript(
-      `console.log("${prefix}", "${data}")`
-    );
+    mainWindow.webContents.executeJavaScript(`console.log("${data}")`);
   }
+
+  mainWindow.webContents.send('status', data.toString());
+
   console.log(data);
 }
