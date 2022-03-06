@@ -23,6 +23,6 @@ jobs:
       - name: Build
         run: docker-compose -f docker-compose.production.yml --env-file /home/kladnitsky/game-launcher/.env build
       - name: Up
-        run: docker-compose -f docker-compose.production.yml up -d
+        run: docker-compose -f docker-compose.production.yml --env-file /home/kladnitsky/game-launcher/.env up -d
       - name: Status
         run: docker ps -a
