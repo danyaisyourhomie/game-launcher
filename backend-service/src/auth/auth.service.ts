@@ -177,7 +177,7 @@ export class AuthService {
 
     const textures = { SKIN: [{ url: skinUrl }], CAPE: [{ url: capeUrl }] };
 
-    return {
+    const res = {
       id: uuid,
       name: user.nickname,
       properties: [
@@ -196,6 +196,10 @@ export class AuthService {
         ],
       ],
     };
+
+    console.log(res);
+
+    return res;
   }
 
   async getSkinURL(nickname: string, textureType: TextureTypes) {
