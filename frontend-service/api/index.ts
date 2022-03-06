@@ -13,7 +13,7 @@ export const getUserByToken = async (token: string) => {
 
     return { result: res };
   } catch (err) {
-    return { err: res.msg };
+    return { err: 'Возникла проблема' };
 
     return null;
   }
@@ -32,7 +32,7 @@ export const loginUser = async (nickname: string, password: string) => {
 
     if (!res.token) {
       return {
-        err: res.msg,
+        err: res?.msg,
       };
     }
 
