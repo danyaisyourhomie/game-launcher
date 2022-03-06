@@ -159,7 +159,7 @@ export class AuthService {
 
       // return { uuid: user.uuid, nickname: user.nickname } as User;
 
-      return getProfile(user.uuid, user.nickname);
+      return this.getProfile(user.uuid, user.nickname);
     } catch (err) {
       console.log(err);
       throw new NotFoundException({ error: 'Invalid user credentials' });
