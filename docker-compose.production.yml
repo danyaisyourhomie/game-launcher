@@ -22,6 +22,9 @@ services:
       - postgres
     environment:
       NODE_ENV: production
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: server
     restart: always
     ports:
       - 4000:4000
