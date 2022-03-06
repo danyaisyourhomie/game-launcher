@@ -1,4 +1,4 @@
-export const BACKEND_HOST = 'http://mbtl.ru:4000';
+export const BACKEND_HOST = 'https://mbtl.ru/api';
 
 export const getUserByToken = async (token: string) => {
   try {
