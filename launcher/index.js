@@ -54,12 +54,20 @@ function handleWebSync(
   logTool(user.nickname, ' <- received nickname');
 
   const userProfile = {
-    access_token: user.accessToken,
-    client_token: user.accessToken,
-    uuid: user.uuid,
-    name: user.nickname,
+    access_token: '2f543d86-6f37-49c2-8d3e-52489e766f7a',
+    client_token: '2f543d86-6f37-49c2-8d3e-52489e766f7a',
+    uuid: '95d9b6b6-a24a-4757-8b1f-4fd38c51f793',
+    name: 'denoTen',
     user_properties: JSON.stringify({}),
   };
+
+  //  const userProfile = {
+  //    access_token: user.accessToken,
+  //    client_token: user.accessToken,
+  //    uuid: user.uuid,
+  //    name: user.nickname,
+  //    user_properties: JSON.stringify({}),
+  //  };
 
   mainWindow.webContents.send('status', 'Запускаем игру...');
 
