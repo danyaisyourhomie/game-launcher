@@ -78,6 +78,10 @@ const Wrapper = styled.div`
       max-width: unset;
     }
   }
+
+  @media (max-width: 500px) {
+    margin-bottom: 60px;
+  }
 `;
 
 export default LastNews;

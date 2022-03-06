@@ -151,3 +151,9 @@ textarea:focus,
 input:focus {
   outline: none;
 }
+
+@media (max-width: 500px) {
+  body {
+    font-size: 12px;
+  }
+}

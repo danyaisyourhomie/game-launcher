@@ -23,14 +23,14 @@ const CurrentEvent = () => {
     handleArticles();
   }, []);
 
-  const Thumbnail = <ArticleThumb src={article.thumbnail ?? intro.src} />;
+  const Thumbnail = <ArticleThumb src={article?.thumbnail ?? intro.src} />;
 
   const Info = (
     <ArticleInfo
       isMainArticle
-      title={article.title}
-      description={article.description}
-      date={renderDate(article.createdAt)}
+      title={article?.title}
+      description={article?.description}
+      date={renderDate(article?.createdAt)}
     />
   );
 

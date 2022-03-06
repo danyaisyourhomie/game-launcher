@@ -30,6 +30,10 @@ const Wrapper = styled.div`
 const UserItems = styled.div`
   display: flex;
   gap: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export default UserProfile;

@@ -56,6 +56,10 @@ const Wrapper = styled.div`
     flex: 1;
     height: 100%;
   }
+
+  & img {
+    height: ${({ isMainArticle }) => (isMainArticle ? '100%' : '200px')};
+  }
 `;
 
 const Thumbnail = styled.div``;

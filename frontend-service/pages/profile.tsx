@@ -13,7 +13,6 @@ const Profile: NextPage = () => {
       <Content>
         <LayoutLimiter>
           <UserProfile />
-          <Footer />
         </LayoutLimiter>
       </Content>
     </>
