@@ -145,7 +145,7 @@ export class AuthService {
     }
   }
 
-  async HasJoined({ username, serverId }: HasJoinedRequest) {
+  async hasJoined({ username, serverId }: HasJoinedRequest) {
     try {
       const user = (await this.userRepository.findOne({
         nickname: username,
@@ -159,17 +159,27 @@ export class AuthService {
 
       // return { uuid: user.uuid, nickname: user.nickname } as User;
 
-      return this.getProfile(user.uuid, user.nickname);
+      return this.getProfile(user.uuid);
     } catch (err) {
       console.log(err);
       throw new NotFoundException({ error: 'Invalid user credentials' });
     }
   }
 
-  async getProfile(uuid: string, nickname: string) {
+  async getProfile(uuid: string) {
+    const user = (await this.userRepository.findOne({
+      uuid,
+    })) as User;
+
+    const skinUrl = 'https://s.namemc.com/i/2180771ff87a0c5e.png';
+    const capeUrl =
+      'https://tlauncher.org/upload/all/cloak/414673518322a453535e84419e9fb8c1.png';
+
+    const textures = { SKIN: [{ url: skinUrl }], CAPE: [{ url: capeUrl }] };
+
     return {
       id: uuid,
-      name: nickname,
+      name: user.nickname,
       properties: [
         [
           {
@@ -178,8 +188,8 @@ export class AuthService {
               JSON.stringify({
                 timestamp: new Date(),
                 profileId: uuid,
-                profileName: nickname,
-                textures: {},
+                profileName: user.nickname,
+                textures: textures,
               }),
             ),
           },

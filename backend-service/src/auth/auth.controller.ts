@@ -61,6 +61,21 @@ export class AuthController {
     return result;
   }
 
+  @Get('profile.php')
+  async profile(@Query('uuid') uuid: string) {
+    if (!uuid) {
+      throw new BadRequestException({
+        error: 'Invalid user data. Something is missing',
+      });
+    }
+
+    const result = await this.authService.getProfile(uuid);
+
+    console.log(result);
+
+    return result;
+  }
+
   @Get('hasJoined.php')
   async hasJoined(@Query() data: HasJoinedRequest) {
     console.log('hasJoined.php', data);
@@ -71,7 +86,7 @@ export class AuthController {
       });
     }
 
-    const result = await this.authService.HasJoined(data);
+    const result = await this.authService.hasJoined(data);
 
     console.log(result);
 
