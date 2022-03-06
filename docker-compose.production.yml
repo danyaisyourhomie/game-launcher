@@ -40,6 +40,7 @@ services:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: password
       POSTGRES_DB: server
+    restart: always
 
   pg_admin:
     container_name: pgadmin

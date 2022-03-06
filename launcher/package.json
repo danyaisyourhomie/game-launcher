@@ -14,7 +14,7 @@
     "protocols": {
       "name": "megalauncher-protocol",
       "schemes": [
-        "megalauncher"
+        "megalauncherprotocol"
       ]
     },
     "mac": {

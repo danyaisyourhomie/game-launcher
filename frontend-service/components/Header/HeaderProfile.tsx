@@ -23,7 +23,7 @@ const HeaderProfile = () => {
   );
 
   const openLauncher = useCallback(() => {
-    window.location.href = `megalauncher://TOKEN===${dataToTransfer}`;
+    window.location.href = `megalauncherprotocol://TOKEN===${dataToTransfer}`;
   }, [user]);
 
   return (

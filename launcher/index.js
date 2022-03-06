@@ -166,11 +166,11 @@ app.on('activate', function () {
   }
 });
 
-app.removeAsDefaultProtocolClient('megalauncher');
+app.removeAsDefaultProtocolClient('megalauncherprotocol');
 
-if (!app.isDefaultProtocolClient('megalauncher')) {
+if (!app.isDefaultProtocolClient('megalauncherprotocol')) {
   // Define custom protocol handler. Deep linking works on packaged versions of the application!
-  app.setAsDefaultProtocolClient('megalauncher');
+  app.setAsDefaultProtocolClient('megalauncherprotocol');
 }
 
 app.on('will-finish-launching', function () {
