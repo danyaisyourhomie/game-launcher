@@ -19,7 +19,7 @@ jobs:
       - name: Clean
         run: docker system prune -af
       - name: Pull
-        run: docker-compose pull
+        run: docker-compose -f docker-compose.production.yml pull
       - name: Build
         run: docker-compose -f docker-compose.production.yml build
       - name: Up
