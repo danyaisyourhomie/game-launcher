@@ -14,15 +14,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Stop
+      - name: Stop running services
         run: docker-compose -f docker-compose.production.yml down
-      - name: Clean
+      - name: Clean images
         run: docker system prune -af
-      - name: Pull
+      - name: Pull latest services
         run: docker-compose -f docker-compose.production.yml pull
-      - name: Build
+      - name: Build services
         run: docker-compose -f docker-compose.production.yml build
-      - name: Up
+      - name: Run services
         run: docker-compose -f docker-compose.production.yml up -d
       - name: Status
         run: docker ps -a
