@@ -1,8 +1,8 @@
-export const BACKEND_HOST = 'https://mbtl.ru:4000';
+export const BACKEND_HOST = 'http://mbtl.ru:4000';
 
 export const getUserByToken = async (token: string) => {
   try {
-    const res = await fetch('http://localhost:4000/auth/sync', {
+    const res = await fetch(`${BACKEND_HOST}/auth/sync`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -21,7 +21,7 @@ export const getUserByToken = async (token: string) => {
 
 export const loginUser = async (nickname: string, password: string) => {
   try {
-    const res = await fetch('http://localhost:4000/auth/login', {
+    const res = await fetch(`${BACKEND_HOST}/auth/login`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
