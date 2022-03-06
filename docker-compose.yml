@@ -8,7 +8,6 @@ services:
       target: development
     volumes:
       - ./backend-service:/usr/src/backend
-      - ./backend-service/node_modules:/usr/src/backend/node_modules
       - ./game-textures:/usr/src/backend/public
     command: npm run start:dev
     depends_on:
@@ -19,7 +18,7 @@ services:
     ports:
       - 4000:4000
     env_file:
-      - /home/kladnitsky/actions-runner/_work/game-launcher/.env
+      - .env
 
   postgres:
     container_name: postgres
