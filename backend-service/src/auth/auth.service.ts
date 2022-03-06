@@ -122,13 +122,13 @@ export class AuthService {
   }
 
   async join(data: JoinRequest) {
-    const uuid = data.selectedProfile.replaceAll('-', '');
+    const uuid = data.selectedProfile;
     const accessToken = data.accessToken;
 
     try {
       const user = (await this.userRepository.findOne({ accessToken })) as User;
 
-      if (!user || user.uuid.replaceAll('-', '') !== uuid) {
+      if (!user || user.uuid !== uuid) {
         throw new NotFoundException({ error: 'Invalid user credentials' });
       }
 
