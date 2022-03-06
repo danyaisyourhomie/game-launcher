@@ -182,20 +182,19 @@ export class AuthService {
       name: user.nickname,
       properties: [
         {
-          0: [
-            {
-              name: 'textures',
-              value: btoa(
-                JSON.stringify({
-                  timestamp: new Date(),
-                  profileId: uuid,
-                  profileName: user.nickname,
-                  textures: textures,
-                }),
-              ),
-              signature: '',
-            },
-          ],
+          name: 'textures',
+          value: btoa(
+            JSON.stringify({
+              timestamp: new Date(),
+              profileId: uuid,
+              profileName: user.nickname,
+              textures: {
+                SKIN: { url: skinUrl },
+                CAPE: { url: capeUrl },
+              },
+            }),
+          ),
+          signature: '',
         },
       ],
     };
