@@ -7,16 +7,13 @@ import DownloadIcon from '../icons/DownloadIcon';
 import Button from './Button';
 import ServerStatus from './Server/ServerStatus';
 
+import eventLogo from '../assets/eventLogo.png';
+
 const WelcomeBanner = () => {
   return (
     <Banner>
       <EventLogo>
-        <Image
-          src='/assets/eventLogo.png'
-          alt='Event logo'
-          width={600}
-          height={55}
-        />
+        <Image src={eventLogo} alt='Event logo' width={600} height={55} />
       </EventLogo>
       {/* <ServerStatus /> */}
       <Button
@@ -42,10 +39,18 @@ const Banner = styled.div`
   row-gap: 15px;
 
   position: relative;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const EventLogo = styled.div`
   z-index: 1;
+`;
+
+const EventPicture = styled.img`
+  width: 600px;
 `;
 
 const Background = styled.image`

@@ -71,18 +71,13 @@ export class Auth {
   resolveUser(timeout: number) {
     setTimeout(async () => {
       if (window) {
+        this.user = null;
         const token = window.localStorage.getItem('token');
 
-        if (!token) {
-          this.user = null;
-          return;
-        }
+        if (token) {
+          const { result, err } = await getUserByToken(token);
 
-        const { result, err } = await getUserByToken(token);
-        console.log(result);
-
-        if (result) {
-          this.user = result;
+          this.user = result ?? null;
         }
       } else {
         this.user = null;

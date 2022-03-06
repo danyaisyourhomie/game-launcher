@@ -12,7 +12,7 @@ const Footer = () => {
     <Wrapper>
       <a href='https://vk.com/itmomegabattle'>ITMO.Megabattle</a>
       <span>X</span>
-      <a href='https://partnadem.com'>Kladnitsky</a>
+      <a href='https://partnadem.com'>partnadem</a>
     </Wrapper>
   );
 };

@@ -83,8 +83,6 @@ const Login: NextPage = () => {
 };
 
 const FieldInput = styled.input`
-  height: 50px;
-
   padding: 0px 15px;
 
   font-family: ${MEDIUM_FONT};
@@ -114,7 +112,10 @@ const Form = styled.div`
   width: 300px;
 
   > * {
-    width: 100%;
+    width: 300px;
+    height: 50px;
+
+    box-sizing: border-box;
   }
 `;
 

@@ -15,16 +15,16 @@ const ProfileInformation = () => {
       <Items>
         <StatItem>
           <StatName>Факультет</StatName>
-          <Stat>МФ КТиУ</Stat>
+          <Stat>Неизвестно</Stat>
         </StatItem>
         <StatItem>
           <StatName>Команда</StatName>
-          <Stat>Pussy Hunters</Stat>
+          <Stat>Неизвестно</Stat>
         </StatItem>
         <StatItem>
           <StatName>Сети</StatName>
           <Stats>
-            <Stat href='https://vk.com/kladnitskiy'>
+            <Stat href='https://vk.com/'>
               <VkIcon />
               ВК
             </Stat>

@@ -29,11 +29,18 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex: 1 1 30%;
+  flex-wrap: wrap;
   max-width: ${({ isMainArticle }) =>
     isMainArticle ? '100%' : '33.33333333333%'};
   gap: 15px;
 
   flex-direction: ${({ isMainArticle }) => (isMainArticle ? 'row' : 'column')};
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    height: ${({ isMainArticle }) => (isMainArticle ? 'unset' : 'inherti')};
+  }
 
   height: ${({ isMainArticle }) => (isMainArticle ? '350px' : 'fit-content')};
 

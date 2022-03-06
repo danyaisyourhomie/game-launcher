@@ -10,7 +10,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     <SnackbarProvider maxSnack={3}>
       <NextHeader />
       <AuthProvider>
-        {/* if requireAuth property is present - protect the page */}
         {Component.requireAuth ? (
           <AuthGuard>
             <Component {...pageProps} />

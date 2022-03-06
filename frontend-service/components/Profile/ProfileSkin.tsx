@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { BACKGROUND_SECONDARY_COLOR } from '../../const/css';
 
-import userSkin from '../../assets/userThumb.jpg';
+import userSkin from '../../assets/userThumb.png';
 import Button from '../Button';
 
 interface Props {
@@ -13,7 +13,7 @@ const ProfileSkin = ({ skin = userSkin.src }: Props) => {
   return (
     <SkinWrapper>
       <Skin src={skin} />
-      <Button name='Изменить скин' />
+      {/* <Button name='Изменить скин' /> */}
     </SkinWrapper>
   );
 };

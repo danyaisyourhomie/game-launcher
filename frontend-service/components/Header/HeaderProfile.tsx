@@ -42,6 +42,10 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   column-gap: 30px;
+
+  @media (max-width: 992px) {
+    display: none;
+  }
 `;
 
 const Profile = styled.div`

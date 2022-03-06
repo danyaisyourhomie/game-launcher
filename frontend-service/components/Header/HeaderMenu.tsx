@@ -36,6 +36,10 @@ const Nav = styled.nav`
   a:hover {
     border-bottom: 2px solid ${BLUE_COLOR};
   }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export default HeaderMenu;

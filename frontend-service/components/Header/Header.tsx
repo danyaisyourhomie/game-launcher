@@ -37,6 +37,10 @@ const HeaderContent = styled.div`
   justify-content: space-between;
 
   height: inherit;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 export default Header;

@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
 
-import userThumb from '../assets/userThumb.jpg';
+import userThumb from '../assets/defaultThumb.jpg';
 import { BLUE_COLOR } from '../const/css';
 
 const UserThumb = () => {

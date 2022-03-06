@@ -3,6 +3,7 @@ import React from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header/Header';
 import LayoutLimiter from '../components/LayoutLimiter';
+import NoDataPlaceholder from '../components/NoDataPlaceholder';
 import Content from '../components/Section/Section';
 import Admins from '../components/Templates/Admins';
 import Teams from '../components/Templates/Teams';
@@ -13,10 +14,11 @@ const Community: NextPage = () => {
     <>
       <Header />
       <Content>
-        <LayoutLimiter>
+        {/* <LayoutLimiter>
           <Teams />
           <Admins />
-        </LayoutLimiter>
+        </LayoutLimiter> */}
+        <NoDataPlaceholder />
         <Footer />
       </Content>
     </>

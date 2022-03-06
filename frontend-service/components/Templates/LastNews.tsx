@@ -45,6 +45,18 @@ const Wrapper = styled.div`
   gap: 20px;
 
   margin-bottom: 120px;
+
+  & > div {
+    @media (max-width: 992px) {
+      flex: 33%;
+      max-width: unset;
+    }
+
+    @media (max-width: 768px) {
+      flex: 100%;
+      max-width: unset;
+    }
+  }
 `;
 
 export default LastNews;
