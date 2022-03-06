@@ -52,14 +52,14 @@ export class AuthController {
       });
     }
 
-    console.log(data);
+    console.log('join.php', data);
 
     return await this.authService.join(data);
   }
 
   @Get('hasJoined.php')
   async hasJoined(@Query() data: HasJoinedRequest) {
-    console.log(data);
+    console.log('hasJoined.php', data);
 
     if (!data.username || !data.serverId) {
       throw new BadRequestException({
