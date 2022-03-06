@@ -197,7 +197,7 @@ export class AuthService {
       ],
     };
 
-    console.log(res);
+    console.log(res.toString());
 
     return res;
   }
