@@ -7,6 +7,7 @@ import Button from './../Button';
 import UserThumb from '../UserThumb';
 import { AuthContext } from '../../context/AuthProvider';
 import { User } from '../../common/interfaces/user.dto';
+import { APP_PROTOCOL } from '../../const/launcher';
 
 const HeaderProfile = () => {
   const { user }: { user: User } = useContext(AuthContext);
@@ -16,14 +17,12 @@ const HeaderProfile = () => {
   const dataToTransfer = jwt.sign(
     {
       nickname: user.nickname,
-      uuid: user.uuid,
-      accessToken: user.accessToken,
     },
     'LAUNCHER'
   );
 
   const openLauncher = useCallback(() => {
-    window.location.href = `megalauncher://TOKEN===${dataToTransfer}`;
+    window.location.href = `${APP_PROTOCOL}://TOKEN===${dataToTransfer}`;
   }, [user]);
 
   return (
@@ -31,7 +30,7 @@ const HeaderProfile = () => {
       <Button name='Играть' callback={openLauncher} />
       <Profile>
         <UserThumb />
-        <Button icon={<ArrowDownIcon />} buttonType={ButtonTypes.SLIM} />
+        {/* <Button icon={<ArrowDownIcon />} buttonType={ButtonTypes.SLIM} /> */}
       </Profile>
     </Wrapper>
   );
