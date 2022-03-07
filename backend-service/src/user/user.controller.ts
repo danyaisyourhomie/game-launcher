@@ -27,7 +27,7 @@ export class UserController {
 
   @Get('/:nickname')
   async getUser(@Param('nickname') nickname: string) {
-    return await this.userService.getUser(nickname);
+    return await this.userService.getUser(nickname, false);
   }
 
   @Patch('/:nickname')
