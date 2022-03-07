@@ -17,7 +17,7 @@ const WelcomeBanner = () => {
       <EventLogo>
         <Image src={eventLogo} alt='Event logo' width={600} height={55} />
       </EventLogo>
-      {/* <ServerStatus /> */}
+      <ServerStatus />
       <Button
         name='Скачать лаунчер'
         backgroundColor={BUTTON_PRIMARY_COLOR}

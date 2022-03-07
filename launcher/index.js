@@ -18,7 +18,10 @@ async function handleWebSync(url) {
   const token = url.toString().replace(/\//g, '').split('===')[1];
   const user = jwt.verify(token, 'LAUNCHER');
 
+  console.log('handleWebSync', token);
+
   try {
+    console.log('getting user profile');
     const result = await axios(`http://mbtl.ru/api/users/${user.nickname}`);
     profile = result.data;
   } catch (err) {
@@ -103,8 +106,8 @@ if (gotTheLock) {
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 500,
-    height: 300,
+    width: 800,
+    height: 600,
     webPreferences: {
       nodeIntegration: true,
       autoHideMenuBar: true,
@@ -151,7 +154,9 @@ if (!app.isDefaultProtocolClient(PROTOCOL)) {
 }
 
 app.on('will-finish-launching', function () {
+  console.log('will-finish-launching');
   app.on('open-url', function (event, url) {
+    console.log('open-url', url);
     event.preventDefault();
     deeplinkingUrl = url;
 

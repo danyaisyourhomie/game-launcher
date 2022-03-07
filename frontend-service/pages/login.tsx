@@ -75,7 +75,7 @@ const Login: NextPage = () => {
             onChange={onChangePassword}
           />
           <AuthButton callback={handleUserLogin} />
-          {/* <ServerStatus /> */}
+          <ServerStatus />
         </Form>
       </Wrapper>
     </LayoutLimiter>

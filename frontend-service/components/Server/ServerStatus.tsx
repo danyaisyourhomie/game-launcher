@@ -1,20 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { getPlayers, pingServer } from '../../api';
 import { BACKGROUND_SECONDARY_COLOR } from '../../const/css';
 import StatusOkIcon from '../../icons/StatusOkIcon';
 import UsersIcon from '../../icons/UsersIcon';
 
 const ServerStatus = () => {
-  const isVisible = false;
+  const [isOnline, setIsOnline] = useState(false);
+
+  const [players, setPlayers] = useState([]);
+
+  const handlePingServer = async () => {
+    const { result } = await pingServer();
+
+    if (result === 'pong') {
+      setIsOnline(true);
+    }
+  };
+
+  const handlePlayersCount = async () => {
+    const { result } = await getPlayers();
+
+    if (result) {
+      setPlayers(result);
+    }
+  };
+
+  useEffect(() => {
+    handlePingServer();
+    handlePlayersCount();
+  }, []);
+
   return (
-    isVisible && (
+    isOnline && (
       <Wrapper>
         <OnlineStatus>
           <StatusOkIcon /> Онлайн
         </OnlineStatus>
         <PlayersCount>
           <UsersIcon />
-          153/200
+          {players.length}/150
         </PlayersCount>
       </Wrapper>
     )
