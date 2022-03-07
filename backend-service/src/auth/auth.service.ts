@@ -136,7 +136,7 @@ export class AuthService {
       }
 
       await this.userRepository.save({
-        nickname: user.nickname,
+        id: user.id,
         ...user,
         serverId: data.serverId,
         accessToken: uuid4(),
@@ -160,12 +160,10 @@ export class AuthService {
       }
 
       await this.userRepository.save({
-        nickname: user.nickname,
+        id: user.id,
         ...user,
         serverId,
       });
-
-      // return { uuid: user.uuid, nickname: user.nickname } as User;
 
       return this.getProfile(user.uuid);
     } catch (err) {
