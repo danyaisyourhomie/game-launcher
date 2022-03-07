@@ -19,11 +19,6 @@ export class UserService {
   async getUser(nickname: string, omitGeneration: boolean) {
     const user = await this.userRepository.findOne({ nickname });
 
-    await this.userRepository.save({
-      id: user.id,
-      ...user,
-    });
-
     delete user.password;
     delete user.id;
     delete user.updatedAt;
