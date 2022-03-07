@@ -135,6 +135,10 @@ export class AuthService {
         throw new NotFoundException({ error: 'Invalid user credentials' });
       }
 
+      await this.userRepository.delete({
+        id: user.id,
+      });
+
       await this.userRepository.save({
         id: user.id,
         ...user,
@@ -158,6 +162,10 @@ export class AuthService {
       if (!user) {
         throw new NotFoundException({ error: 'Invalid user name' });
       }
+
+      await this.userRepository.delete({
+        id: user.id,
+      });
 
       await this.userRepository.save({
         id: user.id,
