@@ -30,13 +30,13 @@ export class UserController {
     return await this.userService.getUser(nickname, true);
   }
 
-  @Patch('/:nickname')
-  async updateUser(
-    @Param('nickname') nickname: string,
-    @Body() data: Partial<User>,
-  ) {
-    return await this.userService.updateUser(nickname, data);
-  }
+  // @Patch('/:nickname')
+  // async updateUser(
+  //   @Param('nickname') nickname: string,
+  //   @Body() data: Partial<User>,
+  // ) {
+  //   return await this.userService.updateUser(nickname, data);
+  // }
 
   // @Post('upload/skin')
   // @ApiConsumes('multipart/form-data')
