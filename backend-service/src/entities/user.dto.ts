@@ -8,13 +8,13 @@ import { BaseEntity } from './base_entity.dto';
 
 @Entity()
 export class User extends BaseEntity {
-  @Column()
+  @Column({ unique: true })
   nickname: string;
 
   @Column()
   password: string;
 
-  @Column()
+  @Column({ unique: true })
   uuid: string;
 
   @PrimaryGeneratedColumn('uuid')

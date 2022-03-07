@@ -136,6 +136,7 @@ export class AuthService {
       }
 
       await this.userRepository.save({
+        nickname: user.nickname,
         ...user,
         serverId: data.serverId,
         accessToken: uuid4(),
@@ -158,7 +159,11 @@ export class AuthService {
         throw new NotFoundException({ error: 'Invalid user name' });
       }
 
-      await this.userRepository.save({ ...user, serverId });
+      await this.userRepository.save({
+        nickname: user.nickname,
+        ...user,
+        serverId,
+      });
 
       // return { uuid: user.uuid, nickname: user.nickname } as User;
 
