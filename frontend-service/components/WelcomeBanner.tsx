@@ -19,11 +19,18 @@ const WelcomeBanner = () => {
       </EventLogo>
       <ServerStatus />
       <Button
-        name='Скачать лаунчер'
+        name='Windows'
         backgroundColor={BUTTON_PRIMARY_COLOR}
         icon={<DownloadIcon />}
         iconOrientation='LEFT'
         link='https://disk.yandex.ru/d/9VsAWPB3HzaFag'
+      />
+      <Button
+        name='MacOS'
+        backgroundColor={BUTTON_PRIMARY_COLOR}
+        icon={<DownloadIcon />}
+        iconOrientation='LEFT'
+        link='https://mbtl.ru/files/MegaLauncher_macOS.zip'
       />
       <Background />
     </Banner>
