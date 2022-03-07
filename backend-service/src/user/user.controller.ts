@@ -30,51 +30,51 @@ export class UserController {
     return await this.userService.getUser(nickname, true);
   }
 
-  // @Patch('/:nickname')
-  // async updateUser(
-  //   @Param('nickname') nickname: string,
-  //   @Body() data: Partial<User>,
-  // ) {
-  //   return await this.userService.updateUser(nickname, data);
-  // }
+  @Patch('/:nickname')
+  async updateUser(
+    @Param('nickname') nickname: string,
+    @Body() data: Partial<User>,
+  ) {
+    return await this.userService.updateUser(nickname, data);
+  }
 
-  // @Post('upload/skin')
-  // @ApiConsumes('multipart/form-data')
-  // @ApiBody({
-  //   schema: {
-  //     type: 'object',
-  //     properties: {
-  //       nickname: { type: 'string' },
-  //       skin: {
-  //         type: 'string',
-  //         format: 'binary',
-  //       },
-  //     },
-  //   },
-  // })
-  // @UseInterceptors(
-  //   FileInterceptor('skin', {
-  //     storage: diskStorage({
-  //       destination: './public/skin',
-  //       filename: (req, file, cb) => {
-  //         // Generating a 32 random chars long string
-  //         const randomName = Array(32)
-  //           .fill(null)
-  //           .map(() => Math.round(Math.random() * 16).toString(16))
-  //           .join('');
-  //         //Calling the callback passing the random name generated with the original extension name
-  //         cb(null, `${randomName}.png`);
-  //       },
-  //     }),
-  //   }),
-  // )
-  // uploadSkin(@UploadedFile('file') file, @UploadedFile('nickname') nickname) {
-  //   console.log(file);
-  //   console.log(nickname);
+  @Post('upload/skin')
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        nickname: { type: 'string' },
+        skin: {
+          type: 'string',
+          format: 'binary',
+        },
+      },
+    },
+  })
+  @UseInterceptors(
+    FileInterceptor('skin', {
+      storage: diskStorage({
+        destination: './public/skin',
+        filename: (req, file, cb) => {
+          // Generating a 32 random chars long string
+          const randomName = Array(32)
+            .fill(null)
+            .map(() => Math.round(Math.random() * 16).toString(16))
+            .join('');
+          //Calling the callback passing the random name generated with the original extension name
+          cb(null, `${randomName}.png`);
+        },
+      }),
+    }),
+  )
+  uploadSkin(@UploadedFile('file') file, @UploadedFile('nickname') nickname) {
+    console.log(file);
+    console.log(nickname);
 
-  //   fs.renameSync(
-  //     `./public/skin/${file.filename}.png`,
-  //     `./public/skin/newName.png`,
-  //   );
-  // }
+    fs.renameSync(
+      `./public/skin/${file.filename}.png`,
+      `./public/skin/newName.png`,
+    );
+  }
 }

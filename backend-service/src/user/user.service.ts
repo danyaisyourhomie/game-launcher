@@ -26,7 +26,7 @@ export class UserService {
     return user;
   }
 
-  // async updateUser(nickname: string, data: Partial<User>) {
-  //   return await this.userRepository.save({ nickname, ...data });
-  // }
+  async updateUser(nickname: string, data: Partial<User>) {
+    return await this.userRepository.save({ nickname, ...data });
+  }
 }

@@ -23,16 +23,16 @@ export class AuthController {
     return await this.authService.loginUser(data);
   }
 
-  // @Post('/createAccount')
-  // async createAccount(@Body() account: CreateAccountRequest) {
-  //   return await this.authService.createAccount(account);
-  // }
+  @Post('/createAccount')
+  async createAccount(@Body() account: CreateAccountRequest) {
+    return await this.authService.createAccount(account);
+  }
 
-  // @Get('/changeAccountStatus/:nickname/:status')
-  // async changeAccountStatus(
-  //   @Param('nickname') nickname: string,
-  //   @Param('status') status: AccountStatus,
-  // ) {}
+  @Get('/changeAccountStatus/:nickname/:status')
+  async changeAccountStatus(
+    @Param('nickname') nickname: string,
+    @Param('status') status: AccountStatus,
+  ) {}
 
   @Post('/sync/')
   async syncWithClient(@Body() { token }: TokenVerifyRequest) {
