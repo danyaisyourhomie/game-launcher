@@ -81,7 +81,7 @@ export class AuthService {
         process.env.JWT_TOKEN,
       );
 
-      return await this.userService.getUser(nickname, true);
+      return await this.userService.getUser(nickname, false);
     } catch (err) {
       throw new BadRequestException({ msg: 'Неверный токен синхронизации' });
     }
