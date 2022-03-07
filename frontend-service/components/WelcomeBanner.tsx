@@ -18,7 +18,7 @@ const WelcomeBanner = () => {
         <Image src={eventLogo} alt='Event logo' width={600} height={55} />
       </EventLogo>
       <ServerStatus />
-      <Button
+      {/* <Button
         name='Windows'
         backgroundColor={BUTTON_PRIMARY_COLOR}
         icon={<DownloadIcon />}
@@ -31,7 +31,7 @@ const WelcomeBanner = () => {
         icon={<DownloadIcon />}
         iconOrientation='LEFT'
         link='https://mbtl.ru/files/MegaLauncher_macOS.zip'
-      />
+      /> */}
       <Background />
     </Banner>
   );

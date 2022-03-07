@@ -131,9 +131,10 @@ export class AuthService {
         uuid,
       })) as User;
 
-      console.log(`${user.nickname} с токеном ${accessToken}`, new Date());
+      console.log(`${user.nickname} с токеном ${user.accessToken}`, new Date());
+      console.log(`получил токен: ${accessToken}`, new Date());
 
-      if (!user || user.accessToken !== accessToken) {
+      if (user.accessToken !== accessToken) {
         throw new NotFoundException({
           errorMessage:
             'Ошибка авторизации (ACCESS TOKEN). Возможно вам стоит перезайти в игру через лаунчер',
