@@ -142,7 +142,6 @@ export class AuthService {
       await this.userRepository.save({
         id: user.id,
         ...user,
-        accessToken,
         serverId: data.serverId,
       });
 
