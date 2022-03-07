@@ -152,7 +152,7 @@ export class AuthService {
 
       return { uuid, nickname: user.nickname } as User;
     } catch (err) {
-      console.log(`${username} не смог инициировать соединение`, new Date());
+      console.log(`${uuid} не смог инициировать соединение`, new Date());
       console.log(err);
       throw new NotFoundException({ error: 'Invalid user credentials' });
     }
