@@ -131,10 +131,12 @@ export class AuthService {
         uuid,
       })) as User;
 
+      console.log(`${user.nickname} с токеном ${accessToken}`, new Date());
+
       if (!user || user.accessToken !== accessToken) {
         throw new NotFoundException({
           errorMessage:
-            'Ошибка авторизации. Возможно вам стоит перезайти в игру через лаунчер',
+            'Ошибка авторизации (ACCESS TOKEN). Возможно вам стоит перезайти в игру через лаунчер',
           error: 'Auth',
           cause: '',
         });
@@ -174,12 +176,9 @@ export class AuthService {
         nickname: username,
       })) as User;
 
-      if (!user) {
-        throw new NotFoundException({
-          errorMessage: 'Invalid user profile',
-          error: 'Auth',
-          cause: '',
-        });
+      if (!user || user.serverId !== serverId) {
+        console.log(`${username} Bad server Id`);
+        return;
       }
 
       await this.userRepository.delete({
