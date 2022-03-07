@@ -23,7 +23,7 @@ const WelcomeBanner = () => {
         backgroundColor={BUTTON_PRIMARY_COLOR}
         icon={<DownloadIcon />}
         iconOrientation='LEFT'
-        link='https://disk.yandex.ru/d/9VsAWPB3HzaFag'
+        link='https://mbtl.ru/files/megalauncher-win32-x64.exe'
       />
       <Button
         name='MacOS'
