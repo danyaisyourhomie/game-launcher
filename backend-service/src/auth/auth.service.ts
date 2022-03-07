@@ -143,7 +143,6 @@ export class AuthService {
         id: user.id,
         ...user,
         serverId: data.serverId,
-        accessToken: uuid4(),
       });
 
       return { uuid, nickname: user.nickname } as User;
@@ -180,14 +179,27 @@ export class AuthService {
     }
   }
 
+  randomIntFromInterval(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
   async getProfile(uuid: string) {
     const user = (await this.userRepository.findOne({
       uuid,
     })) as User;
 
-    const skinUrl = 'https://s.namemc.com/i/2180771ff87a0c5e.png';
-    const capeUrl =
-      'https://tlauncher.org/upload/all/cloak/414673518322a453535e84419e9fb8c1.png';
+    const skins = [
+      'https://www.minecraftskins.com/uploads/skins/2021/05/29/steve--with-hoodie--17960601.png',
+      'https://www.minecraftskins.com/uploads/skins/2021/10/30/steve-s-halloween-costume-19236802.png',
+      'https://www.minecraftskins.com/uploads/skins/2021/12/30/steve-hoodie-19614156.png',
+      'https://www.minecraftskins.com/uploads/skins/2021/12/12/steve-hoodie-19513406.png',
+      'https://www.minecraftskins.com/uploads/skins/2021/11/27/young-steve-19412406.png',
+      'https://www.minecraftskins.com/uploads/skins/2021/10/10/minecraft-blue-jacket-hoodie-steve-19096857.png',
+    ];
+
+    const index = skins.length - 1;
+    const skinUrl = skins[this.randomIntFromInterval(0, index)];
+    const capeUrl = null;
 
     const textures = { SKIN: { url: skinUrl }, CAPE: { url: capeUrl } };
 
