@@ -132,7 +132,12 @@ export class AuthService {
       })) as User;
 
       if (!user || user.accessToken !== accessToken) {
-        throw new NotFoundException({ error: 'Invalid user credentials' });
+        throw new NotFoundException({
+          errorMessage:
+            'Ошибка авторизации. Возможно вам стоит перезайти в игру через лаунчер',
+          error: 'Auth',
+          cause: '',
+        });
       }
 
       await this.userRepository.delete({
@@ -154,7 +159,12 @@ export class AuthService {
     } catch (err) {
       console.log(`${uuid} не смог инициировать соединение`, new Date());
       console.log(err);
-      throw new NotFoundException({ error: 'Invalid user credentials' });
+      throw new NotFoundException({
+        errorMessage:
+          'Ошибка авторизации. Возможно вам стоит перезайти в игру через лаунчер',
+        error: 'Auth',
+        cause: '',
+      });
     }
   }
 
@@ -165,7 +175,11 @@ export class AuthService {
       })) as User;
 
       if (!user) {
-        throw new NotFoundException({ error: 'Invalid user name' });
+        throw new NotFoundException({
+          errorMessage: 'Invalid user profile',
+          error: 'Auth',
+          cause: '',
+        });
       }
 
       await this.userRepository.delete({
@@ -184,7 +198,7 @@ export class AuthService {
     } catch (err) {
       console.log(`${username} не смог подключиться`, new Date());
       console.log(err);
-      throw new NotFoundException({ error: 'Invalid user credentials' });
+      return;
     }
   }
 
