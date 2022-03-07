@@ -14,7 +14,7 @@ export class User extends BaseEntity {
   @Column()
   password: string;
 
-  @PrimaryGeneratedColumn('uuid')
+  @Column()
   uuid: string;
 
   @PrimaryGeneratedColumn('uuid')
@@ -27,6 +27,11 @@ export class User extends BaseEntity {
     nullable: true,
   })
   skinUrl: string;
+
+  @Column({
+    nullable: true,
+  })
+  capeUrl: string;
 
   @Column({ default: AccountStatus.ENABLED })
   status: AccountStatus;

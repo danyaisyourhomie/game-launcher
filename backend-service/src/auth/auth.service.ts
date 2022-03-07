@@ -107,9 +107,10 @@ export class AuthService {
       salt,
     );
 
-    const newUser = await this.userRepository.save({
+    await this.userRepository.save({
       nickname,
       password: newPassword,
+      uuid: uuid4().replace(/-/g, ''),
     });
 
     return { nickname, password: generatePassword ? randomPassword : password };
@@ -130,20 +131,17 @@ export class AuthService {
         accessToken,
       })) as User;
 
-      const userUUID = user.uuid.replace(/-/g, '');
-
-      if (!user || userUUID !== uuid) {
+      if (!user || user.uuid !== uuid) {
         throw new NotFoundException({ error: 'Invalid user credentials' });
       }
 
       await this.userRepository.save({
         ...user,
-        userUUID,
         serverId: data.serverId,
         accessToken: uuid4(),
       });
 
-      return { uuid: userUUID, nickname: user.nickname } as User;
+      return { uuid, nickname: user.nickname } as User;
     } catch (err) {
       console.log(err);
       throw new NotFoundException({ error: 'Invalid user credentials' });
@@ -180,33 +178,26 @@ export class AuthService {
     const capeUrl =
       'https://tlauncher.org/upload/all/cloak/414673518322a453535e84419e9fb8c1.png';
 
-    const textures = [{ SKIN: [{ url: skinUrl }], CAPE: [{ url: capeUrl }] }];
-
-    const userUUID = user.uuid.replace(/-/g, '');
+    const textures = { SKIN: { url: skinUrl }, CAPE: { url: capeUrl } };
 
     const res = {
-      id: userUUID,
+      id: user.uuid,
       name: user.nickname,
       properties: [
         {
           name: 'textures',
           value: btoa(
             JSON.stringify({
-              timestamp: new Date(),
-              profileId: userUUID,
+              timestamp: +new Date(),
+              profileId: user.uuid,
               profileName: user.nickname,
-              textures: {
-                SKIN: { url: skinUrl },
-                CAPE: { url: capeUrl },
-              },
+              textures,
             }),
           ),
           signature: '',
         },
       ],
     };
-
-    console.log(res.toString());
 
     return res;
   }

@@ -54,10 +54,10 @@ function handleWebSync(
   logTool(user.nickname, ' <- received nickname');
 
   const userProfile = {
-    access_token: '2f543d86-6f37-49c2-8d3e-52489e766f7a',
-    client_token: '2f543d86-6f37-49c2-8d3e-52489e766f7a',
-    uuid: '95d9b6b6-a24a-4757-8b1f-4fd38c51f793',
-    name: 'denoTen',
+    access_token: 'cc99dee3-6f4a-4a9f-9976-cbe3026623be',
+    client_token: 'cc99dee3-6f4a-4a9f-9976-cbe3026623be',
+    uuid: 'ccf2ca9e-3c20-43a6-95b9-f21425a3c5ce',
+    name: 'kladnitsky',
     user_properties: JSON.stringify({}),
   };
 
