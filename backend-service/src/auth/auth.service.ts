@@ -128,10 +128,10 @@ export class AuthService {
 
     try {
       const user = (await this.userRepository.findOne({
-        accessToken,
+        uuid,
       })) as User;
 
-      if (!user || user.uuid !== uuid) {
+      if (!user || user.accessToken !== accessToken) {
         throw new NotFoundException({ error: 'Invalid user credentials' });
       }
 

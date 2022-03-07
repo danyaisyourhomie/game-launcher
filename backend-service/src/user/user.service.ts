@@ -3,6 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/entities/user.dto';
 import { Repository } from 'typeorm';
 
+import { v4 as uuid4 } from 'uuid';
+
 @Injectable()
 export class UserService {
   constructor(
@@ -16,6 +18,12 @@ export class UserService {
 
   async getUser(nickname: string) {
     const user = await this.userRepository.findOne({ nickname });
+
+    await this.userRepository.save({
+      id: user.id,
+      ...user,
+      accessToken: uuid4(),
+    });
 
     delete user.password;
     delete user.id;
