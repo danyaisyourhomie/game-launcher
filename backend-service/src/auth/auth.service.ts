@@ -142,6 +142,7 @@ export class AuthService {
       await this.userRepository.save({
         id: user.id,
         ...user,
+        accessToken,
         serverId: data.serverId,
       });
 
@@ -199,7 +200,8 @@ export class AuthService {
 
     const index = skins.length - 1;
     const skinUrl = skins[this.randomIntFromInterval(0, index)];
-    const capeUrl = null;
+    const capeUrl =
+      'https://tlauncher.org/upload/all/cloak/414673518322a453535e84419e9fb8c1.png';
 
     const textures = { SKIN: { url: skinUrl }, CAPE: { url: capeUrl } };
 
