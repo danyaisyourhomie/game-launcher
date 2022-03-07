@@ -145,8 +145,14 @@ export class AuthService {
         serverId: data.serverId,
       });
 
+      console.log(
+        `${user.nickname} инициирует соединение с сервером`,
+        new Date(),
+      );
+
       return { uuid, nickname: user.nickname } as User;
     } catch (err) {
+      console.log(`${username} не смог инициировать соединение`, new Date());
       console.log(err);
       throw new NotFoundException({ error: 'Invalid user credentials' });
     }
@@ -172,8 +178,11 @@ export class AuthService {
         serverId,
       });
 
+      console.log(`${username} подключился`, new Date());
+
       return this.getProfile(user.uuid);
     } catch (err) {
+      console.log(`${username} не смог подключиться`, new Date());
       console.log(err);
       throw new NotFoundException({ error: 'Invalid user credentials' });
     }

@@ -1,5 +1,5 @@
 {
-  "name": "Megalauncher",
+  "name": "megalauncher",
   "version": "1.0.0",
   "description": "Minecraft launcher for inner projects and researches",
   "main": "index.js",

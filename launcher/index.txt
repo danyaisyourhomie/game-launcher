@@ -39,8 +39,8 @@ async function handleWebSync(url) {
     client_token: profile.accessToken,
     uuid: profile.uuid,
     user_properties: JSON.stringify({}),
-    maxGb: profile.maxGb ?? '3G',
-    minGb: profile.minGb ?? '2G',
+    maxGb: profile.maxGb ?? '3Gb',
+    mibGb: profile.minGb ?? '2Gb',
   };
 
   mainWindow.webContents.send('status', 'Запускаем игру...');
