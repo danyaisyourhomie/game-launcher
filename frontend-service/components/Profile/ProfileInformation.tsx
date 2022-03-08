@@ -21,7 +21,7 @@ const ProfileInformation = () => {
           <StatName>Команда</StatName>
           <Stat>Неизвестно</Stat>
         </StatItem>
-        <StatItem>
+        {/* <StatItem>
           <StatName>Сети</StatName>
           <Stats>
             <Stat href='https://vk.com/'>
@@ -33,7 +33,7 @@ const ProfileInformation = () => {
               ИСУ
             </Stat>
           </Stats>
-        </StatItem>
+        </StatItem> */}
       </Items>
     </Wrapper>
   );

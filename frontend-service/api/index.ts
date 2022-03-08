@@ -38,6 +38,27 @@ export const getArticles = async () => {
   }
 };
 
+export const getUserSkin = async (uuid: string) => {
+  try {
+    const res = await fetch(
+      `http://skin.ovesnovs.com/3d.php?user=${uuid}&aa=true`,
+      {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      }
+    ).then((data) => data.json());
+
+    return { result: res };
+  } catch (err) {
+    return { err: 'Возникла проблема' };
+
+    return null;
+  }
+};
+
 export const getLatestArticle = async () => {
   try {
     const res = await fetch(`${BACKEND_HOST}/articles/latest/`, {

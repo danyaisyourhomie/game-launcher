@@ -18,20 +18,29 @@ const WelcomeBanner = () => {
         <Image src={eventLogo} alt='Event logo' width={600} height={55} />
       </EventLogo>
       <ServerStatus />
-      <Button
-        name='Windows'
-        backgroundColor={BUTTON_PRIMARY_COLOR}
-        icon={<DownloadIcon />}
-        iconOrientation='LEFT'
-        link='https://mbtl.ru/files/megalauncher-win32-x64.exe'
-      />
-      <Button
-        name='MacOS'
-        backgroundColor={BUTTON_PRIMARY_COLOR}
-        icon={<DownloadIcon />}
-        iconOrientation='LEFT'
-        link='https://mbtl.ru/files/MegaLauncher_macOS.zip'
-      />
+      <ButtonLink>
+        <Button
+          name='Windows'
+          backgroundColor={BUTTON_PRIMARY_COLOR}
+          icon={<DownloadIcon />}
+          iconOrientation='LEFT'
+          link='https://mbtl.ru/files/megalauncher-win32-x64.exe'
+        />
+        <Button
+          name='MacOS [Intel]'
+          backgroundColor={BUTTON_PRIMARY_COLOR}
+          icon={<DownloadIcon />}
+          iconOrientation='LEFT'
+          link='https://mbtl.ru/files/MegaLauncher_macOS.zip'
+        />
+        <Button
+          name='MacOS [M1]'
+          backgroundColor={BUTTON_PRIMARY_COLOR}
+          icon={<DownloadIcon />}
+          iconOrientation='LEFT'
+          link='https://mbtl.ru/files/[M1]MegaLauncher_macOS.zip'
+        />
+      </ButtonLink>
       <Background />
     </Banner>
   );
@@ -52,6 +61,11 @@ const Banner = styled.div`
   @media (max-width: 768px) {
     display: none;
   }
+`;
+
+const ButtonLink = styled.div`
+  display: flex;
+  column-gap: 20px;
 `;
 
 const EventLogo = styled.div`

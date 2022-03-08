@@ -1,18 +1,22 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { BACKGROUND_SECONDARY_COLOR } from '../../const/css';
 
-import userSkin from '../../assets/userThumb.png';
-import Button from '../Button';
+import defaultSkin from '../../assets/userThumb.png';
+import { AuthContext } from '../../context/AuthProvider';
 
-interface Props {
-  skin?: string;
-}
+const ProfileSkin = () => {
+  const { user } = useContext(AuthContext);
 
-const ProfileSkin = ({ skin = userSkin.src }: Props) => {
+  const getSkinUrl = () => {
+    return user?.uuid
+      ? `https://skin.ovesnovs.com/3d.php?user=${user?.uuid}`
+      : defaultSkin.src;
+  };
+
   return (
     <SkinWrapper>
-      <Skin src={skin} />
+      <Skin src={getSkinUrl()} />
       {/* <Button name='Изменить скин' /> */}
     </SkinWrapper>
   );
@@ -41,9 +45,11 @@ const Skin = styled.img`
   height: 100%;
   width: 100%;
 
+  min-width: 200px;
+
   border-radius: 15px;
 
-  object-fit: cover;
+  object-fit: contain;
 `;
 
 export default ProfileSkin;
