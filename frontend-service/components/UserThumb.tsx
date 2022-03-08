@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React, { useContext, useMemo } from 'react';
 import styled from 'styled-components';
 
@@ -17,14 +16,7 @@ const UserThumb = () => {
 
   return (
     <Thumbnail>
-      <Image
-        src={userSkin}
-        alt='User picture'
-        height={300}
-        width={300}
-        quality={100}
-        objectFit='contain'
-      />
+      <Image src={userSkin} alt='User picture' />
     </Thumbnail>
   );
 };
@@ -40,6 +32,12 @@ const Thumbnail = styled.div`
   &:hover {
     border: 1px solid ${GREEN_COLOR};
   }
+`;
+
+const Image = styled.img`
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 `;
 
 export default UserThumb;
