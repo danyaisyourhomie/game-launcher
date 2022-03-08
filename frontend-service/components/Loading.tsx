@@ -16,13 +16,20 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   height: 100vh;
+
+  row-gap: 30px;
 `;
 
 const LoadingGif = styled.img`
   height: 100px;
 `;
 
-const LoadingBar = styled.div``;
+const LoadingBar = styled.div`
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 4px 16px;
+`;
 
 export default Loading;

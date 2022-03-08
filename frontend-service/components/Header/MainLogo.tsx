@@ -27,6 +27,10 @@ const Logo = styled.div`
   align-items: center;
   justify-content: center;
   column-gap: 10px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const LogoImage = styled.div`

@@ -50,6 +50,10 @@ const Items = styled.div`
   flex-direction: column;
   row-gap: 20px;
   align-self: flex-end;
+
+  @media (max-width: 768px) {
+    align-self: unset;
+  }
 `;
 
 const StatItem = styled.div``;

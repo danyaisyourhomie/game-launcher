@@ -58,7 +58,7 @@ const Banner = styled.div`
 
   position: relative;
 
-  @media (max-width: 768px) {
+  @media (max-width: 576px) {
     display: none;
   }
 `;
