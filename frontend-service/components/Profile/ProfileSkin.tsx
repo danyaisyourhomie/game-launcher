@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { BACKGROUND_SECONDARY_COLOR } from '../../const/css';
 
@@ -8,15 +8,15 @@ import { AuthContext } from '../../context/AuthProvider';
 const ProfileSkin = () => {
   const { user } = useContext(AuthContext);
 
-  const getSkinUrl = () => {
+  const userSkin = useMemo(() => {
     return user?.uuid
       ? `https://skin.ovesnovs.com/3d.php?user=${user?.uuid}`
       : defaultSkin.src;
-  };
+  }, [user]);
 
   return (
     <SkinWrapper>
-      <Skin src={getSkinUrl()} />
+      <Skin src={userSkin} />
       {/* <Button name='Изменить скин' /> */}
     </SkinWrapper>
   );

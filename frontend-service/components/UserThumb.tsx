@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import styled from 'styled-components';
 
 import userThumb from '../assets/defaultThumb.jpg';
@@ -9,10 +9,16 @@ import { AuthContext } from '../context/AuthProvider';
 const UserThumb = () => {
   const { user } = useContext(AuthContext);
 
+  const userSkin = useMemo(() => {
+    return user?.uuid
+      ? `https://skin.ovesnovs.com/3d.php?user=${user?.uuid}`
+      : userThumb.src;
+  }, [user]);
+
   return (
     <Thumbnail>
       <Image
-        src={`https://skin.ovesnovs.com/3d.php?user=${user.uuid}` ?? userThumb}
+        src={userSkin}
         alt='User picture'
         height={300}
         width={300}
