@@ -36,5 +36,8 @@ export class User extends BaseEntity {
   @Column({ default: AccountStatus.ENABLED })
   status: AccountStatus;
 
+  @Column({ default: 'PLAYER' })
+  type: 'PLAYER' | 'ADMIN';
+
   token: string;
 }

@@ -12,6 +12,7 @@ interface Props {
   backgroundColor?: string;
   iconOrientation?: 'LEFT' | 'RIGHT';
   link?: string;
+  buttonIsCentered?: boolean;
 }
 
 const Button = ({
@@ -23,15 +24,17 @@ const Button = ({
   backgroundColor,
   iconOrientation = 'RIGHT',
   link,
+  buttonIsCentered,
 }: Props) => {
   return link ? (
     <a href={link}>
       <ButtonWrapper
         type='button'
         color={color}
-        buttonType={buttonType ?? ButtonTypes.DEFAULT}
         hasIcon={Boolean(icon && name)}
         backgroundColor={backgroundColor}
+        buttonType={buttonType ?? ButtonTypes.DEFAULT}
+        buttonIsCentered
         onClick={callback}>
         {iconOrientation === 'LEFT' ? (
           <>
@@ -51,6 +54,7 @@ const Button = ({
       buttonType={buttonType ?? ButtonTypes.DEFAULT}
       hasIcon={Boolean(icon && name)}
       backgroundColor={backgroundColor}
+      buttonIsCentered
       onClick={callback}>
       {iconOrientation === 'LEFT' ? (
         <>
@@ -70,6 +74,8 @@ const ButtonWrapper = styled.button`
   align-items: center;
   justify-content: center;
   column-gap: 10px;
+
+  margin: ${(props) => (props.buttonIsCentered ? 'auto' : 'inherit')};
 
   padding: ${(props) =>
     props.buttonType === ButtonTypes.DEFAULT ? '10px 50px' : 'unset'};

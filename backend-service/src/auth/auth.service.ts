@@ -131,9 +131,6 @@ export class AuthService {
         uuid,
       })) as User;
 
-      console.log(`${user.nickname} с токеном ${user.accessToken}`, new Date());
-      console.log(`получил токен: ${accessToken}`, new Date());
-
       if (user.accessToken !== accessToken) {
         throw new NotFoundException({
           errorMessage:
@@ -179,6 +176,12 @@ export class AuthService {
 
       if (!user || user.serverId !== serverId) {
         console.log(`${username} Bad server Id`);
+        throw new NotFoundException({
+          errorMessage:
+            'Ошибка авторизации. Походу вы используете не официальный лаунчер Мегабаттла.',
+          error: 'Auth',
+          cause: '',
+        });
         return;
       }
 
@@ -221,9 +224,8 @@ export class AuthService {
     ];
 
     const index = skins.length - 1;
-    const skinUrl = skins[this.randomIntFromInterval(0, index)];
-    const capeUrl =
-      'https://tlauncher.org/upload/all/cloak/414673518322a453535e84419e9fb8c1.png';
+    const skinUrl = user.skinUrl ?? skins[this.randomIntFromInterval(0, index)];
+    const capeUrl = user.capeUrl ?? '';
 
     const textures = { SKIN: { url: skinUrl }, CAPE: { url: capeUrl } };
 

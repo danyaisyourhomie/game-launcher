@@ -28,9 +28,6 @@ import { ServeStaticModule } from '@nestjs/serve-static';
       entities: [Article, User, AuthSession],
       synchronize: true,
     }),
-    // ServeStaticModule.forRoot({
-    //   rootPath: join(__dirname, '..', 'static'),
-    // }),
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,4 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import {
+  ForbiddenException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/entities/user.dto';
 import { Repository } from 'typeorm';
@@ -28,5 +32,43 @@ export class UserService {
 
   async updateUser(nickname: string, data: Partial<User>) {
     return await this.userRepository.save({ nickname, ...data });
+  }
+
+  async linkUserTexture(
+    nickname: string,
+    filename: string,
+    type: 'CAPE' | 'SKIN',
+  ) {
+    const user = await this.userRepository.findOne({ nickname });
+
+    if (!user) {
+      throw new NotFoundException({ msg: 'No such user' });
+    }
+
+    if (type === 'CAPE') {
+      if (user.type !== 'ADMIN') {
+        throw new ForbiddenException({
+          msg: 'Только админы могут ставить плащи',
+        });
+      }
+
+      console.log(`${nickname} обновил плащ`);
+
+      return await this.userRepository.update(
+        {
+          id: user.id,
+        },
+        { capeUrl: filename },
+      );
+    }
+
+    console.log(`${nickname} обновил скин`);
+
+    return await this.userRepository.update(
+      {
+        id: user.id,
+      },
+      { skinUrl: filename },
+    );
   }
 }

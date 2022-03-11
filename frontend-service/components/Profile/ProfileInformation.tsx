@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import {
   BACKGROUND_SECONDARY_COLOR,
@@ -6,20 +6,22 @@ import {
   SMALL_TEXT,
   TEXT_SECONDARY_COLOR,
 } from '../../const/css';
+import { AuthContext } from '../../context/AuthProvider';
 import HeartIcon from '../../icons/HeartIcon';
 import VkIcon from '../../icons/VkIcon';
 
 const ProfileInformation = () => {
+  const { user } = useContext(AuthContext);
   return (
     <Wrapper>
       <Items>
         <StatItem>
-          <StatName>Факультет</StatName>
-          <Stat>Неизвестно</Stat>
+          <StatName>Роль</StatName>
+          <Stat>{user?.type}</Stat>
         </StatItem>
         <StatItem>
           <StatName>Команда</StatName>
-          <Stat>Неизвестно</Stat>
+          <Stat>{user?.team ?? 'Одинокий волк'}</Stat>
         </StatItem>
         {/* <StatItem>
           <StatName>Сети</StatName>
@@ -56,17 +58,14 @@ const Items = styled.div`
   }
 `;
 
-const StatItem = styled.div``;
+const StatItem = styled.div`
+  min-width: 250px;
+`;
 
 const StatName = styled.p`
   font-size: ${SMALL_TEXT};
   margin-bottom: 10px;
   color: ${TEXT_SECONDARY_COLOR};
-`;
-
-const Stats = styled.div`
-  display: flex;
-  column-gap: 10px;
 `;
 
 const Stat = styled.a`

@@ -1,4 +1,7 @@
-export const BACKEND_HOST = 'https://mbtl.ru/api';
+export const BACKEND_HOST =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:4000'
+    : 'https://mbtl.ru/api';
 export const TAPPER_HOST = 'http://mbtl.ru:4567/v1';
 
 export const getUserByToken = async (token: string) => {
@@ -132,4 +135,32 @@ export const getPlayers = async () => {
   } catch (err) {
     return { err: 'Возникла проблема' };
   }
+};
+
+export const uploadSkin = async (formData) => {
+  return fetch(`${BACKEND_HOST}/users/upload/skin`, {
+    method: 'POST',
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      return result;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
+
+export const uploadCape = async (formData) => {
+  return fetch(`${BACKEND_HOST}/users/upload/cape`, {
+    method: 'POST',
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      return result;
+    })
+    .catch((error) => {
+      return error;
+    });
 };

@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  backend:
+    container_name: backend
+    build:
+      dockerfile: Dockerfile
+      context: ./backend-service
+      target: production
+    volumes:
+      - ./game-textures:/usr/src/backend/static
+      - ./backend-service:/usr/src/backend
+      - ./backend-service/node_modules:/usr/src/backend/node_modules
+    command: npm run start:dev
+    depends_on:
+      - postgres
+    environment:
+      NODE_ENV: production
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: server
+      JWT_TOKEN: LAUNCHER
+    restart: always
+    ports:
+      - 4000:4000
+
+  postgres:
+    container_name: postgres
+    image: postgres:10.4-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - /home/kladnitsky/postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: server
+    restart: always

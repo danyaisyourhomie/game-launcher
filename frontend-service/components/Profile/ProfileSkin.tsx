@@ -4,6 +4,7 @@ import { BACKGROUND_SECONDARY_COLOR } from '../../const/css';
 
 import defaultSkin from '../../assets/userThumb.png';
 import { AuthContext } from '../../context/AuthProvider';
+import UploadFile from './UploadFile';
 
 const ProfileSkin = () => {
   const { user } = useContext(AuthContext);
@@ -17,7 +18,7 @@ const ProfileSkin = () => {
   return (
     <SkinWrapper>
       <Skin src={userSkin} />
-      {/* <Button name='Изменить скин' /> */}
+      <UploadFile />
     </SkinWrapper>
   );
 };
