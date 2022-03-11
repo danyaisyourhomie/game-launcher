@@ -1,7 +1,5 @@
 export const BACKEND_HOST =
-  process.env.NODE_ENV === 'development'
-    ? 'http://localhost:4000'
-    : 'https://mbtl.ru/api';
+  process.env.NODE_ENV === 'development' ? 'http://localhost:4000' : '/api';
 export const TAPPER_HOST = 'http://mbtl.ru:4567/v1';
 
 export const getUserByToken = async (token: string) => {
