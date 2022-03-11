@@ -17,7 +17,7 @@ const ProfileSkin = () => {
 
   return (
     <SkinWrapper>
-      <Skin src={userSkin} />
+      <Skin src={`${userSkin}?${+new Date()}`} />
     </SkinWrapper>
   );
 };
