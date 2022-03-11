@@ -223,9 +223,12 @@ export class AuthService {
       'https://www.minecraftskins.com/uploads/skins/2021/10/10/minecraft-blue-jacket-hoodie-steve-19096857.png',
     ];
 
+    const DOMAIN_URL = 'https://mbtl.ru/';
+
     const index = skins.length - 1;
-    const skinUrl = user.skinUrl ?? skins[this.randomIntFromInterval(0, index)];
-    const capeUrl = user.capeUrl ?? '';
+    const skinUrl =
+      DOMAIN_URL + user.skinUrl ?? skins[this.randomIntFromInterval(0, index)];
+    const capeUrl = DOMAIN_URL + user.capeUrl ?? '';
 
     const textures = { SKIN: { url: skinUrl }, CAPE: { url: capeUrl } };
 
