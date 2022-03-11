@@ -15,6 +15,7 @@ import { AuthContext } from '../../context/AuthProvider';
 import { uploadCape, uploadSkin } from '../../api';
 
 import { useSnackbar } from 'notistack';
+import { useRouter } from 'next/router';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -44,6 +45,8 @@ export interface DialogTitleProps {
 }
 
 export default function UploadFile() {
+  const router = useRouter();
+
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const { user } = React.useContext(AuthContext);
@@ -79,6 +82,7 @@ export default function UploadFile() {
       if (res.nickname) {
         enqueueSnackbar('Скин был успешно обновлён!', { variant: 'success' });
         setOpen(false);
+        router.reload(window.location.pathname);
       } else {
         enqueueSnackbar(res.msg, { variant: 'warning' });
       }
@@ -117,6 +121,12 @@ export default function UploadFile() {
             Загрузите скин
           </Typography>
           <input type='file' name='file' onChange={changeHandlerSkin} />
+          <Typography
+            gutterBottom
+            variant='body2'
+            style={{ maxWidth: '200px', margin: 'auto', opacity: 0.3 }}>
+            Изменения вступят в силу после перезахода на сервер
+          </Typography>
 
           {user.type === 'ADMIN' && (
             <>
@@ -124,12 +134,6 @@ export default function UploadFile() {
                 Загрузите плащ
               </Typography>
               <input type='file' name='file' onChange={changeHandlerCape} />
-              <Typography
-                gutterBottom
-                variant='body2'
-                style={{ maxWidth: '200px', margin: 'auto', opacity: 0.3 }}>
-                Изменения вступят в силу после перезахода на сервер
-              </Typography>
             </>
           )}
         </DialogContent>

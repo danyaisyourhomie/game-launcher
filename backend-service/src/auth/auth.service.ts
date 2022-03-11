@@ -226,9 +226,11 @@ export class AuthService {
     const DOMAIN_URL = 'https://mbtl.ru/';
 
     const index = skins.length - 1;
-    const skinUrl =
-      DOMAIN_URL + user.skinUrl ?? skins[this.randomIntFromInterval(0, index)];
-    const capeUrl = DOMAIN_URL + user.capeUrl ?? '';
+    const skinUrl = user.skinUrl
+      ? DOMAIN_URL + user.skinUrl
+      : skins[this.randomIntFromInterval(0, index)];
+
+    const capeUrl = user.capeUrl ? DOMAIN_URL + user.capeUrl : '';
 
     const textures = { SKIN: { url: skinUrl }, CAPE: { url: capeUrl } };
 
