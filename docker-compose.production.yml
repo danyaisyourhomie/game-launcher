@@ -16,8 +16,7 @@ services:
       context: ./backend-service
       target: production
     volumes:
-      - /home/game-textures:/usr/src/backend/public
-      - ./game-textures:/usr/src/backend/static
+      - /home/game-textures:/usr/src/backend/static
     command: npm run start
     depends_on:
       - postgres
