@@ -230,9 +230,11 @@ export class AuthService {
       ? DOMAIN_URL + user.skinUrl
       : skins[this.randomIntFromInterval(0, index)];
 
-    const capeUrl = user.capeUrl ? DOMAIN_URL + user.capeUrl : '';
+    const capeUrl = user.capeUrl ? DOMAIN_URL + user.capeUrl : null;
 
-    const textures = { SKIN: { url: skinUrl }, CAPE: { url: capeUrl } };
+    const textures = capeUrl
+      ? { SKIN: { url: skinUrl }, CAPE: { url: capeUrl } }
+      : { SKIN: { url: skinUrl } };
 
     const res = {
       id: user.uuid,
