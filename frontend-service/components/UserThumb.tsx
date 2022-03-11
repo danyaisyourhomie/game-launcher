@@ -16,7 +16,10 @@ const UserThumb = () => {
 
   return (
     <Thumbnail>
-      <Image src={`${userSkin}&${+new Date()}`} alt='User picture' />
+      <Image
+        src={`${userSkin}&${+new Date()}&headOnly=true`}
+        alt='User picture'
+      />
     </Thumbnail>
   );
 };

@@ -121,12 +121,6 @@ export default function UploadFile() {
             Загрузите скин
           </Typography>
           <input type='file' name='file' onChange={changeHandlerSkin} />
-          <Typography
-            gutterBottom
-            variant='body2'
-            style={{ maxWidth: '200px', margin: 'auto', opacity: 0.3 }}>
-            Изменения вступят в силу после перезахода на сервер
-          </Typography>
 
           {user.type === 'ADMIN' && (
             <>
@@ -136,6 +130,12 @@ export default function UploadFile() {
               <input type='file' name='file' onChange={changeHandlerCape} />
             </>
           )}
+          <Typography
+            gutterBottom
+            variant='body2'
+            style={{ maxWidth: '200px', margin: 'auto', opacity: 0.3 }}>
+            Изменения вступят в силу после перезахода на сервер
+          </Typography>
         </DialogContent>
 
         <DialogActions>
