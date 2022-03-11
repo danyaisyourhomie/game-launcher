@@ -9,12 +9,17 @@ import {
 import { AuthContext } from '../../context/AuthProvider';
 import HeartIcon from '../../icons/HeartIcon';
 import VkIcon from '../../icons/VkIcon';
+import UploadFile from './UploadFile';
 
 const ProfileInformation = () => {
   const { user } = useContext(AuthContext);
   return (
     <Wrapper>
       <Items>
+        <StatItem>
+          <StatName>Действия</StatName>
+          <UploadFile />
+        </StatItem>
         <StatItem>
           <StatName>Роль</StatName>
           <Stat>{user?.type}</Stat>
@@ -23,6 +28,7 @@ const ProfileInformation = () => {
           <StatName>Команда</StatName>
           <Stat>{user?.team ?? 'Одинокий волк'}</Stat>
         </StatItem>
+
         {/* <StatItem>
           <StatName>Сети</StatName>
           <Stats>

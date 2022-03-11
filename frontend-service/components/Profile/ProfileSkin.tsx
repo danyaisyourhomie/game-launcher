@@ -18,7 +18,6 @@ const ProfileSkin = () => {
   return (
     <SkinWrapper>
       <Skin src={userSkin} />
-      <UploadFile />
     </SkinWrapper>
   );
 };
@@ -36,6 +35,8 @@ const SkinWrapper = styled.div`
   border-radius: 15px;
 
   overflow: hidden;
+
+  position: relative;
 
   background-color: ${BACKGROUND_SECONDARY_COLOR};
 `;
