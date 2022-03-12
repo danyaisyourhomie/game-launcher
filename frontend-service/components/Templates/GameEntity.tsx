@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import {
   BACKGROUND_SECONDARY_COLOR,
   GREEN_COLOR,
@@ -10,35 +11,63 @@ import {
 
 import entityPic from '../../assets/userThumb.jpg';
 
+import heart from '../../assets/heart.png';
+
 interface Props {
-  name?: string;
+  Name?: string;
   src?: string;
   descr?: string;
+  uuid: string;
+  op?: boolean;
+  banned?: boolean;
+  address?: string;
+  hunger?: number;
 }
 
 const GameEntity = ({
-  name = 'Player Name',
+  Name = 'Player Name',
   src = entityPic.src,
   descr = 'players',
+  uuid,
+  banned,
+  op,
+  address,
+  hunger,
 }: Props) => {
   return (
     <Entity>
-      <EntityPic src={src} />
+      <EntityPic src={`https://skin.ovesnovs.com/3d.php?user=${uuid}`} />
       <EntityInfo>
-        <EntityName>{name}</EntityName>
-        <EntityDescription>{descr}</EntityDescription>
+        <EntityName>
+          {Name}
+          {address && ' [Онлайн]'}
+        </EntityName>
+        <EntityDescription>{op ? 'Админ' : 'Игрок'}</EntityDescription>
+        <EntityDescription>
+          {hunger
+            ? Array.from(Array(hunger).keys()).map((u, index) => (
+                <Heart src={heart.src} key={index} />
+              ))
+            : 'Нет данных о здоровье игрока'}
+        </EntityDescription>
       </EntityInfo>
     </Entity>
   );
 };
 
+const Heart = styled.img`
+  height: 20px;
+  width: 20px;
+`;
+
 const Entity = styled.div`
   display: flex;
   align-items: center;
-  flex: 1 1 25%;
+  flex: 1 1 20%;
+  flex-direction: column;
   column-gap: 10px;
 
-  max-width: 30%;
+  max-width: 50%;
 
   padding: 15px;
 
@@ -50,18 +79,36 @@ const Entity = styled.div`
   &:hover {
     border: 2px solid ${GREEN_COLOR};
   }
+
+  @media (max-width: 1200px) {
+    flex: 1 1 33.33333333333%;
+  }
+
+  @media (max-width: 700px) {
+    height: 300px;
+  }
+
+  @media (max-width: 500px) {
+    max-width: 100%;
+    flex: 1 100%;
+  }
 `;
 
 const EntityPic = styled.img`
-  height: 50px;
-  width: 50px;
-  border-radius: 50px;
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+
+  @media (max-width: 700px) {
+    height: 150px;
+  }
 `;
 
 const EntityInfo = styled.div`
   display: flex;
+  margin-top: 20px;
   flex-direction: column;
-  row-gap: 2px;
+  row-gap: 10px;
 `;
 
 const EntityName = styled.h5`

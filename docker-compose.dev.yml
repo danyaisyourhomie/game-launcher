@@ -11,6 +11,7 @@ services:
     volumes:
       - ./frontend-service/node_modules:/usr/src/frontend/node_modules
       - ./frontend-service/.next:/usr/src/frontend/.next
+      - ./frontend-service:/usr/src/frontend
 
   backend:
     container_name: backend

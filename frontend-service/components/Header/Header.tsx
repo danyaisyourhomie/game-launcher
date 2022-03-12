@@ -8,7 +8,7 @@ import MainLogo from './MainLogo';
 
 const NavItems = [
   { name: 'Главная', link: '/' },
-  // { name: 'Сообщество', link: '/community' },
+  { name: 'Сообщество', link: '/community' },
   { name: 'Мой профиль', link: '/profile' },
 ];
 const Header = () => {

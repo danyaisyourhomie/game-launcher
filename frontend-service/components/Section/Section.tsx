@@ -13,5 +13,7 @@ const Wrapper = styled.div`
   position: relative;
   min-height: calc(100vh - 80px);
   padding: 50px 0px;
+
+  display: flex;
 `;
 export default Content;

@@ -7,12 +7,11 @@ import {
   TEXT_SECONDARY_COLOR,
 } from '../../const/css';
 import { AuthContext } from '../../context/AuthProvider';
-import HeartIcon from '../../icons/HeartIcon';
-import VkIcon from '../../icons/VkIcon';
 import UploadFile from './UploadFile';
 
 const ProfileInformation = () => {
   const { user } = useContext(AuthContext);
+
   return (
     <Wrapper>
       <Items>

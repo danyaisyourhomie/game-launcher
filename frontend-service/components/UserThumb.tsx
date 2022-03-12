@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { useContext, useMemo } from 'react';
 import styled from 'styled-components';
 
@@ -15,12 +16,14 @@ const UserThumb = () => {
   }, [user]);
 
   return (
-    <Thumbnail>
-      <Image
-        src={`${userSkin}&${+new Date()}&headOnly=true`}
-        alt='User picture'
-      />
-    </Thumbnail>
+    <Link href={'/profile'}>
+      <Thumbnail>
+        <Image
+          src={`${userSkin}&${+new Date()}&headOnly=true`}
+          alt='User picture'
+        />
+      </Thumbnail>
+    </Link>
   );
 };
 
@@ -28,13 +31,6 @@ const Thumbnail = styled.div`
   height: 42px;
   width: 42px;
   overflow: hidden;
-
-  border-radius: 40px;
-  border: 1px solid ${BLUE_COLOR};
-
-  &:hover {
-    border: 1px solid ${GREEN_COLOR};
-  }
 `;
 
 const Image = styled.img`

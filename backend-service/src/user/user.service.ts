@@ -7,8 +7,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/entities/user.dto';
 import { Repository } from 'typeorm';
 
-import { v4 as uuid4 } from 'uuid';
-
 @Injectable()
 export class UserService {
   constructor(
@@ -46,19 +44,13 @@ export class UserService {
     }
 
     if (type === 'CAPE') {
-      if (user.type !== 'ADMIN') {
-        throw new ForbiddenException({
-          msg: 'Только админы могут ставить плащи',
-        });
-      }
-
       console.log(`${nickname} обновил плащ`);
 
       return await this.userRepository.update(
         {
           id: user.id,
         },
-        { capeUrl: filename },
+        { capeUrl: 'static/cape/' + filename },
       );
     }
 

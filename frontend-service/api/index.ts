@@ -1,6 +1,10 @@
 export const BACKEND_HOST =
-  process.env.NODE_ENV === 'development' ? 'http://localhost:4000' : '/api';
+  process.env.NODE_ENV === 'development' ? 'https://mbtl.ru/api' : '/api';
+
 export const TAPPER_HOST = 'https://servertap.mbtl.ru/v1';
+
+export const TAPPER_KEY =
+  'c107f2b62891d2ba25e4790909e6a308f0c27925c929b8be29d052f5f957ce93f180db8c0b058b4ba61d1a12bd1161e82bde2436e305da5079cf9d58ddfa0f14';
 
 export const getUserByToken = async (token: string) => {
   try {
@@ -108,7 +112,7 @@ export const pingServer = async () => {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        key: 'c107f2b62891d2ba25e4790909e6a308f0c27925c929b8be29d052f5f957ce93f180db8c0b058b4ba61d1a12bd1161e82bde2436e305da5079cf9d58ddfa0f14',
+        key: TAPPER_KEY,
       },
     }).then((data) => data.json());
 
@@ -125,7 +129,7 @@ export const getPlayers = async () => {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        key: 'c107f2b62891d2ba25e4790909e6a308f0c27925c929b8be29d052f5f957ce93f180db8c0b058b4ba61d1a12bd1161e82bde2436e305da5079cf9d58ddfa0f14',
+        key: TAPPER_KEY,
       },
     }).then((data) => data.json());
 
@@ -153,6 +157,42 @@ export const uploadCape = async (formData) => {
   return fetch(`${BACKEND_HOST}/users/upload/cape`, {
     method: 'POST',
     body: formData,
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      return result;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
+
+export const getPlayersList = async () => {
+  return fetch(`${TAPPER_HOST}/players/all`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      key: TAPPER_KEY,
+    },
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      return result;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
+
+export const getPlayersOnlineList = async () => {
+  return fetch(`${TAPPER_HOST}/players`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      key: TAPPER_KEY,
+    },
   })
     .then((response) => response.json())
     .then((result) => {

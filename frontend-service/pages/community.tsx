@@ -5,7 +5,7 @@ import Header from '../components/Header/Header';
 import LayoutLimiter from '../components/LayoutLimiter';
 import NoDataPlaceholder from '../components/NoDataPlaceholder';
 import Content from '../components/Section/Section';
-import Admins from '../components/Templates/Admins';
+import Players from '../components/Templates/Players';
 import Teams from '../components/Templates/Teams';
 import withAuth from '../guards/withAuth';
 
@@ -14,11 +14,10 @@ const Community: NextPage = () => {
     <>
       <Header />
       <Content>
-        {/* <LayoutLimiter>
-          <Teams />
-          <Admins />
-        </LayoutLimiter> */}
-        <NoDataPlaceholder />
+        <LayoutLimiter>
+          {/* <Teams /> */}
+          <Players />
+        </LayoutLimiter>
         <Footer />
       </Content>
     </>

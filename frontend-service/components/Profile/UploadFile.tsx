@@ -70,11 +70,9 @@ export default function UploadFile() {
   };
 
   const handleFilesUpload = async () => {
-    const formData = new FormData();
-
     if (isSkinPicked) {
+      const formData = new FormData();
       formData.append('nickname', user?.nickname);
-
       formData.append('skin', selectedSkin);
 
       const res = await uploadSkin(formData);
@@ -89,9 +87,19 @@ export default function UploadFile() {
     }
 
     if (isCapePicked) {
-      formData.append('skin', selectedCape);
+      const formData = new FormData();
+      formData.append('nickname', user?.nickname);
+      formData.append('cape', selectedCape);
 
-      await uploadCape(formData);
+      const res = await uploadCape(formData);
+
+      if (res.nickname) {
+        enqueueSnackbar('Плащ был успешно обновлён!', { variant: 'success' });
+        setOpen(false);
+        router.reload(window.location.pathname);
+      } else {
+        enqueueSnackbar(res.msg, { variant: 'warning' });
+      }
     }
   };
 
