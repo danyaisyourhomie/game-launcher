@@ -1,7 +1,7 @@
 FROM node:current-alpine as base
 WORKDIR /usr/src/frontend
 COPY package.json ./
-RUN npm install
+RUN npm install --legacy-peer-deps
 COPY . .
 
 # Linux + Node + Source + Project dependencies + build assets

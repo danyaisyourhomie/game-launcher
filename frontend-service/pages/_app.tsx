@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-// import Router from 'next/router';
-// import withYM from 'next-ym';
+import Router from 'next/router';
+import withYM from 'next-ym';
 import NextHeader from '../components/Next/NextHeader';
 import { AuthProvider } from '../context/AuthProvider';
 import { SnackbarProvider } from 'notistack';
@@ -26,5 +26,4 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 
 // pass your YM code as first argument
-// export default withYM('87809687', Router)(MyApp);
-export default MyApp;
+export default withYM('87809687', Router)(MyApp);
