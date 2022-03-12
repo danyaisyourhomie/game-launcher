@@ -1,17 +1,5 @@
 version: '3.8'
 services:
-  frontend:
-    build:
-      context: ./frontend-service
-      dockerfile: Dockerfile.dev
-    restart: always
-    ports:
-      - 3000:3000
-      - 9229:9229
-    volumes:
-      - ./frontend-service/node_modules:/usr/src/frontend/node_modules
-      - ./frontend-service/.next:/usr/src/frontend/.next
-
   backend:
     container_name: backend
     build:

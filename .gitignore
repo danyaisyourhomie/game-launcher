@@ -1,6 +1,7 @@
 postgres-data
 pgadmin-data
 game-textures
+frontend
 .env
 
 **/node_modules
