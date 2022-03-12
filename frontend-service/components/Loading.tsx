@@ -28,7 +28,6 @@ const LoadingGif = styled.img`
 
 const LoadingBar = styled.div`
   position: relative;
-  background-color: rgba(0, 0, 0, 0.8);
   padding: 4px 16px;
 `;
 

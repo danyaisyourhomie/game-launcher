@@ -19,7 +19,7 @@ const UserThumb = () => {
     <Link href={'/profile'}>
       <Thumbnail>
         <Image
-          src={`${userSkin}&${+new Date()}&headOnly=true`}
+          src={`${userSkin}&${+new Date()}&headOnly=true&aa=true&ratio=20`}
           alt='User picture'
         />
       </Thumbnail>

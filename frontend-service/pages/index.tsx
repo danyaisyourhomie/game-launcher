@@ -7,6 +7,7 @@ import WelcomeBanner from '../components/WelcomeBanner';
 import LastNews from '../components/Templates/LastNews';
 import Footer from '../components/Footer';
 import withAuth from '../guards/withAuth';
+import styled from 'styled-components';
 
 const Home: NextPage = () => {
   return (
@@ -15,7 +16,9 @@ const Home: NextPage = () => {
       <WelcomeBanner />
       <Content>
         <LayoutLimiter>
+          <Map src='https://map.mbtl.ru/#world;flat;-1740,64,-270;1' />
           <CurrentEvent />
+
           <LastNews />
           <Footer />
         </LayoutLimiter>
@@ -23,6 +26,15 @@ const Home: NextPage = () => {
     </>
   );
 };
+
+const Map = styled.iframe`
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 400px;
+
+  margin-bottom: 60px;
+`;
 
 export default Home;
 

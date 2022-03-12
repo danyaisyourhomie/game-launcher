@@ -45,17 +45,19 @@ const Players = () => {
 
   const bottomLimit = scrollsCount ? scrollsCount : 0;
   const topLimit =
-    MAX_PLAYERS_PER_REQUEST + (scrollsCount ? scrollsCount - 1 : scrollsCount);
+    MAX_PLAYERS_PER_REQUEST + (scrollsCount ? scrollsCount : scrollsCount);
+
+  const ControlPanel = Boolean(players.length) && (
+    <ButtonWrapper>
+      <Button name='Назад' callback={handlePagination.bind({}, 'BACK')} />
+      <Button name='Далее' callback={handlePagination.bind({}, 'NEXT')} />
+    </ButtonWrapper>
+  );
 
   return (
     <>
       <SectionName title='Игроки' />
-      {Boolean(players.length) && (
-        <ButtonWrapper>
-          <Button name='Назад' callback={handlePagination.bind({}, 'BACK')} />
-          <Button name='Далее' callback={handlePagination.bind({}, 'NEXT')} />
-        </ButtonWrapper>
-      )}
+      {ControlPanel}
       <Wrapper ref={scrollRef}>
         {players
           .filter((u, index) => index >= bottomLimit && index < topLimit)
@@ -67,6 +69,7 @@ const Players = () => {
             <GameEntity key={player.uuid} {...player} />
           ))}
       </Wrapper>
+      {ControlPanel}
     </>
   );
 };
@@ -103,7 +106,6 @@ const Wrapper = styled.div`
   gap: 20px;
 
   padding: 0px 10px;
-  margin-bottom: 120px;
 `;
 
 export default Players;
