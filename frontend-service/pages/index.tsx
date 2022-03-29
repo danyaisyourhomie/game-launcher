@@ -1,13 +1,13 @@
-import type { NextPage } from 'next';
 import Content from '../components/Section/Section';
-import Header from '../components/Header/Header';
-import LayoutLimiter from '../components/LayoutLimiter';
 import CurrentEvent from '../components/Templates/CurrentEvent';
-import WelcomeBanner from '../components/WelcomeBanner';
-import LastNews from '../components/Templates/LastNews';
 import Footer from '../components/Footer';
-import withAuth from '../guards/withAuth';
+import Header from '../components/Header/Header';
+import LastNews from '../components/Templates/LastNews';
+import LayoutLimiter from '../components/LayoutLimiter';
+import type { NextPage } from 'next';
+import WelcomeBanner from '../components/WelcomeBanner';
 import styled from 'styled-components';
+import withAuth from '../guards/withAuth';
 
 const Home: NextPage = () => {
   return (
@@ -16,9 +16,7 @@ const Home: NextPage = () => {
       <WelcomeBanner />
       <Content>
         <LayoutLimiter>
-          <Map src='https://map.mbtl.ru/#world;flat;-1740,64,-270;1' />
           <CurrentEvent />
-
           <LastNews />
           <Footer />
         </LayoutLimiter>
